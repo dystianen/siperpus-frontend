@@ -14,6 +14,7 @@ import * as y from "yup";
 import { useForm, yupResolver } from "@mantine/form";
 import { toast } from "react-toastify";
 import { useLocalStorage } from "@mantine/hooks";
+import { useRouter } from "next/navigation";
 
 type PopupLoginTypes = {
   opened: boolean;
@@ -26,6 +27,7 @@ const schemaValidation = y.object().shape({
 });
 
 const PopupLogin = ({ opened, close }: PopupLoginTypes) => {
+  const router = useRouter();
   const [_, setToken] = useLocalStorage({
     key: "token",
     getInitialValueInEffect: false,
@@ -53,6 +55,7 @@ const PopupLogin = ({ opened, close }: PopupLoginTypes) => {
       .then((res) => {
         toast("Login successfully!");
         setOpenPopupLogin(false);
+        router.refresh();
         setToken(res.token);
       });
   });

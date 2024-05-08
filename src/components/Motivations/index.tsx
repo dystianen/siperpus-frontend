@@ -18,12 +18,12 @@ const Motivations = () => {
       />
 
       <Box style={{ zIndex: 999 }}>
-        <Text fw={600} fz={48} c={"primary.1"} ta={"center"}>
+        <Text fw={600} fz={40} c={"primary.1"} ta={"center"}>
           Motivations
         </Text>
 
         <Text
-          fz={{ base: 50, md: 100 }}
+          fz={{ base: 50, md: 80 }}
           ta={"center"}
           c={"primary.0"}
           lh={{ base: "50px", md: "120px" }}

@@ -53,7 +53,7 @@ export default function RootLayout({
         <ReduxProvider>
           <MantineProvider theme={theme} defaultColorScheme={"light"}>
             <Header />
-            <Box mt={72}>{children}</Box>
+            <Box mt={100}>{children}</Box>
 
             <ToastContainer
               position="bottom-right"

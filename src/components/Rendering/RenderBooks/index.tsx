@@ -6,12 +6,12 @@ type conditionalRenderingTypes = {
   isFetching: boolean;
   children: ReactNode;
 };
-const RenderingBooks = ({
+const RenderBooks = ({
   isFetching,
   children,
 }: conditionalRenderingTypes) => {
   return (
-    <Box pos={"relative"}>
+    <Box>
       {isFetching ? (
         <Grid>
           {Array.from({ length: 4 }).map((_, index) => (
@@ -27,4 +27,4 @@ const RenderingBooks = ({
   );
 };
 
-export default RenderingBooks;
+export default RenderBooks;

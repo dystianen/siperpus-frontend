@@ -6,7 +6,7 @@ import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   return (
-    <Container size={"xl"} mb={100}>
+    <Container size={"lg"} mb={100}>
       <Hero />
       <Motivations />
       <Testimonials />

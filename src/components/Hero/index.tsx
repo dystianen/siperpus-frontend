@@ -32,9 +32,9 @@ const Hero = () => {
       >
         <Stack>
           <Text
-            fz={{ base: 50, md: 100 }}
+            fz={{ base: 50, md: 80 }}
             c={"primary.0"}
-            lh={{ base: "60px", md: "120px" }}
+            lh={{ base: "60px", md: "100px" }}
           >
             Let’s <span style={{ fontWeight: 700 }}>Improve</span> <br />{" "}
             Yourself by <br /> <span style={{ fontWeight: 700 }}>Reading</span>
@@ -43,9 +43,11 @@ const Hero = () => {
             size="lg"
             radius={"lg"}
             w={"max-content"}
-            bg={"#555555"}
-            onClick={() => router.push("/categories")}
+            onClick={() => router.push("/books")}
             rightSection={<FaArrowRight />}
+            variant="outline"
+            color="primary.0"
+            bg={"white"}
           >
             Explore Books Now
           </Button>
@@ -69,7 +71,7 @@ const Hero = () => {
           </Card>
         </Stack>
 
-        <Image src={"/psm.png"} width={500} height={680} alt="psm" />
+        <Image src={"/psm.png"} width={450} height={650} alt="psm" />
       </Flex>
     </Box>
   );

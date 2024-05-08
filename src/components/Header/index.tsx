@@ -7,6 +7,7 @@ import {
   Menu,
   Text,
   UnstyledButton,
+  rem,
 } from "@mantine/core";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
@@ -15,7 +16,7 @@ import PopupLogin from "../PopupLogin";
 import PopupRegister from "../PopupRegister";
 import { useAtom } from "jotai";
 import { openedPopupLogin, openedPopupRegister } from "@/config/GlobalState";
-import { useLocalStorage } from "@mantine/hooks";
+import { useLocalStorage, useWindowScroll } from "@mantine/hooks";
 import { useParserToken } from "@/hooks/useParserToken";
 import { FaChevronDown } from "react-icons/fa6";
 import { motion } from "framer-motion";
@@ -24,6 +25,7 @@ const Header = () => {
   const router = useRouter();
   const dataToken = useParserToken();
   const pathname = usePathname();
+  const [scroll] = useWindowScroll();
   const [token, _, removeToken] = useLocalStorage({ key: "token" });
   const [openedLogin, setOpenPopupLogin] = useAtom(openedPopupLogin);
   const [openedRegister, setOpenPopupRegister] = useAtom(openedPopupRegister);
@@ -34,18 +36,10 @@ const Header = () => {
       href: "/",
     },
     {
-      text: "Categories",
-      href: "/categories",
+      text: "Books",
+      href: "/books",
     },
   ];
-
-  const renderStyleMenuItem = {
-    paddingTop: 5,
-    paddingBottom: 5,
-    paddingLeft: 16,
-    paddingRight: 16,
-    borderRadius: 10,
-  };
 
   return (
     <Box
@@ -54,9 +48,12 @@ const Header = () => {
       h={90}
       top={0}
       bg={"#DDDDDD"}
-      style={{ zIndex: 99 }}
+      style={{
+        zIndex: 99,
+        boxShadow: scroll.y > 50 ? `0 ${rem(3)} ${rem(10)} 0 #0000001a` : "",
+      }}
     >
-      <Container size={"xl"}>
+      <Container size={"lg"}>
         <Group justify="space-between">
           <Image src={"/logo.png"} width={100} height={90} alt="logo" />
           <Group>
@@ -66,7 +63,7 @@ const Header = () => {
                 onClick={() => router.push(it.href)}
                 fw={500}
                 style={{
-                  borderBottom: it.href === pathname ? "2px solid #557153" : "",
+                  borderBottom: pathname === it.href ? "2px solid #557153" : "",
                 }}
               >
                 {it.text}
@@ -89,24 +86,21 @@ const Header = () => {
 
               <Menu.Dropdown>
                 <Menu.Item>
-                  <motion.div
-                    style={renderStyleMenuItem}
-                    whileHover={{
-                      backgroundColor: "#c2c2c2",
-                    }}
-                  >
-                    <Text c={"primary.1"}>Profile</Text>
-                  </motion.div>
+                  <Text c={"primary.1"}>Profile</Text>
                 </Menu.Item>
-                <Menu.Item onClick={removeToken}>
-                  <motion.div
-                    style={renderStyleMenuItem}
-                    whileHover={{
-                      backgroundColor: "#c2c2c2",
-                    }}
-                  >
-                    <Text c={"primary.1"}>Logout</Text>
-                  </motion.div>
+                <Menu.Item onClick={() => router.push("/favorite")}>
+                  <Text c={"primary.1"}>Favorite</Text>
+                </Menu.Item>
+                <Menu.Item onClick={() => router.push("/borrowed")}>
+                  <Text c={"primary.1"}>Borrowed</Text>
+                </Menu.Item>
+                <Menu.Item
+                  onClick={() => {
+                    router.refresh();
+                    removeToken();
+                  }}
+                >
+                  <Text c={"primary.1"}>Logout</Text>
                 </Menu.Item>
               </Menu.Dropdown>
             </Menu>

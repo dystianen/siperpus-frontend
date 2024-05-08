@@ -1,6 +1,6 @@
 "use client";
 import CardBook from "@/components/CardBook";
-import RenderingBooks from "@/components/Rendering/RenderingBooks";
+import RenderBooks from "@/components/Rendering/RenderBooks";
 import EmptyState from "@/components/EmptyState";
 import { Sidebar } from "@/components/Sidebar";
 import { activeSidebar } from "@/config/GlobalState";
@@ -29,7 +29,7 @@ export default function Categories() {
 
   return (
     <Box h={"80vh"} mt={100}>
-      <Container size={"xl"}>
+      <Container size={"lg"}>
         <Group justify="space-between">
           <Text fz={32} fw={600} mb={32}>
             Books
@@ -46,12 +46,12 @@ export default function Categories() {
             <Sidebar />
           </Grid.Col>
           <Grid.Col span={10}>
-            <RenderingBooks isFetching={isFetching}>
+            <RenderBooks isFetching={isFetching}>
               {isSuccess && books!.length > 0 ? (
                 <ScrollArea h={"72vh"} scrollbars="y" scrollbarSize={6}>
                   <Grid>
                     {books?.map((it, index) => (
-                      <Grid.Col key={index} span={3}>
+                      <Grid.Col key={index} span={{ base: 1, md: 4, lg: 3 }}>
                         <CardBook item={it} />
                       </Grid.Col>
                     ))}
@@ -60,7 +60,7 @@ export default function Categories() {
               ) : (
                 <EmptyState />
               )}
-            </RenderingBooks>
+            </RenderBooks>
           </Grid.Col>
         </Grid>
       </Container>

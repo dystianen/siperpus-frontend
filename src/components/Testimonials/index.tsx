@@ -6,7 +6,7 @@ import { useGetReviewsQuery } from "@/redux/slice/books.api";
 
 const Testimonials = () => {
   const { data: reviews } = useGetReviewsQuery();
-  console.log("🚀 ~ Testimonials ~ reviews:", reviews);
+
   return (
     <Box pos={"relative"}>
       <ParticleAbsolute
@@ -16,11 +16,17 @@ const Testimonials = () => {
         position={{ top: -100, left: -50 }}
       />
 
-      <Text fw={600} fz={48} c={"primary.1"} ta={"center"}>
+      <Text fw={600} fz={40} c={"primary.1"} ta={"center"}>
         Testimonials
       </Text>
 
-      <Carousel withIndicators withControls={false} loop align={"center"} mt={32}>
+      <Carousel
+        withIndicators
+        withControls={false}
+        loop
+        align={"center"}
+        mt={32}
+      >
         {reviews?.map((it, index) => (
           <>
             {it.review !== "" && (
@@ -34,17 +40,17 @@ const Testimonials = () => {
                   />
 
                   <Stack gap={0} ml={32}>
-                    <Text c={"primary.1"} fz={40}>
+                    <Text c={"primary.1"} fz={24}>
                       &quot;{it.review}&quot; 
                     </Text>
-                    <Group>
+                    <Group align="center" gap={4}>
                       <Image
                         src={"/star.svg"}
-                        width={41}
-                        height={42}
+                        width={30}
+                        height={30}
                         alt="star"
                       />
-                      <Text fw={600} fz={32}>
+                      <Text fw={600} fz={24}>
                         {it.rating}/5
                       </Text>
                     </Group>
