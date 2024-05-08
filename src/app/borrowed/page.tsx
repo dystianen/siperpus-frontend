@@ -15,7 +15,6 @@ import dayjs from "dayjs";
 
 const Borrowed = () => {
   const { data: borrowed } = useGetBorrowedBooksQuery();
-  console.log("🚀 ~ Borrowed ~ borrowed:", borrowed);
   return (
     <Container size={"lg"}>
       <Text fw={600} fz={40} mb={24} c={"primary.1"}>
@@ -36,7 +35,7 @@ const Borrowed = () => {
                 <Stack gap={0}>
                   <Text fw={600}>{it.title}</Text>
                   <Text>
-                    Due date : {dayjs(it.due_date).format("dd, MMM YYYY")}
+                    Due date : {dayjs(it.due_date).format("DD, MMM YYYY")}
                   </Text>
                   <Text>status : {it.status}</Text>
                   <Button
