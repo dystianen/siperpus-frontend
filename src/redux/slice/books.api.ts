@@ -7,12 +7,13 @@ import type {
   responseCollectionTypes,
   responseDetailBookTypes,
   responseReviewTypes,
+  responseTotalFineTypes,
 } from "@/types/books";
 
 export const booksApi = createApi({
   reducerPath: "booksApi",
   baseQuery: baseQuery,
-  tagTypes: ["GET_DETAIL"],
+  tagTypes: ["GET_DETAIL", "LIST_BORROWED"],
   endpoints: (builder) => ({
     getBooks: builder.query<
       responseBookTypes["data"],
@@ -67,6 +68,26 @@ export const booksApi = createApi({
         url: "borrowing",
       }),
       transformResponse: (response: responseBorrowedTypes) => response.data,
+      providesTags: ["LIST_BORROWED"],
+    }),
+    postReturnBook: builder.mutation<any, string>({
+      query: (borrow_id) => ({
+        url: "return",
+        method: "POST",
+        body: {
+          borrow_id,
+        },
+      }),
+      invalidatesTags: ["LIST_BORROWED"],
+    }),
+    getTotalFine: builder.query<responseTotalFineTypes["data"], string>({
+      query: (borrow_id) => ({
+        url: "total-fine",
+        params: {
+          borrow_id,
+        },
+      }),
+      transformResponse: (response: responseTotalFineTypes) => response.data,
     }),
   }),
 });
@@ -79,4 +100,6 @@ export const {
   usePostAddFavoriteMutation,
   useGetCollectionFavoriteBooksQuery,
   useGetBorrowedBooksQuery,
+  usePostReturnBookMutation,
+  useLazyGetTotalFineQuery,
 } = booksApi;

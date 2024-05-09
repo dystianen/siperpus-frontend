@@ -69,7 +69,7 @@ export type collectionTypes = {
 };
 export type responseCollectionTypes = GeneralResponse<collectionTypes[]>;
 
-type borrowedTypes = {
+export type borrowedTypes = {
   borrow_id: string;
   user_id: string;
   book_id: string;
@@ -91,3 +91,8 @@ type borrowedTypes = {
   total_fine: number;
 };
 export type responseBorrowedTypes = GeneralResponse<borrowedTypes[]>;
+
+type totalFineTypes = {
+  total_fine: string
+}
+export type responseTotalFineTypes = GeneralResponse<totalFineTypes>;

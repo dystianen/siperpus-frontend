@@ -5,7 +5,6 @@ import {
   Stack,
   Text,
   TextInput,
-  Textarea,
   UnstyledButton,
 } from "@mantine/core";
 import { useSetAtom } from "jotai";
