@@ -22,8 +22,8 @@ type PopupLoginTypes = {
 };
 
 const schemaValidation = y.object().shape({
-  email: y.string().required("Email wajib diisi!"),
-  password: y.string().required("Password wajib diisi!"),
+  email: y.string().required("Email is required!"),
+  password: y.string().required("Password is required!"),
 });
 
 const PopupLogin = ({ opened, close }: PopupLoginTypes) => {
