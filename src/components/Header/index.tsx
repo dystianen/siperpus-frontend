@@ -54,7 +54,7 @@ const Header = () => {
       }}
     >
       <Container size={"lg"}>
-        <Group justify="space-between">
+        <Group justify="space-between" wrap="nowrap">
           <Image src={"/logo.png"} width={100} height={90} alt="logo" />
           <Group>
             {menu.map((it, index) => (
