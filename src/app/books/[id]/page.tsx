@@ -57,7 +57,7 @@ const DetailBook = () => {
 
   return (
     <Container size={"lg"}>
-      <Text fw={600} fz={40} c={"primary.1"}>
+      <Text fw={600} fz={40} c={"neutral.8"}>
         Detail Book
       </Text>
       <RenderDetailBook isFetching={isFetching}>
@@ -71,7 +71,7 @@ const DetailBook = () => {
             />
 
             <Stack>
-              <Text fw={600} fz={32} c={"primary.0"}>
+              <Text fw={600} fz={32} c={"success.9"}>
                 {detail.title}
               </Text>
               {bookData.map((it, index) => (
@@ -84,11 +84,11 @@ const DetailBook = () => {
                   </Grid.Col>
                 </Grid>
               ))}
-              <Text fw={600} fz={25} c={"primary.1"}>
+              <Text fw={600} fz={25} c={"neutral.8"}>
                 Synopsis
               </Text>
               <Text
-                c={"primary.1"}
+                c={"neutral.8"}
                 dangerouslySetInnerHTML={{ __html: detail.synopsis }}
               />
 
@@ -96,7 +96,7 @@ const DetailBook = () => {
                 <Button
                   variant="outline"
                   leftSection={<BsBookmarkPlusFill />}
-                  color={"primary.0"}
+                  color={"success.9"}
                   bg={"white"}
                   disabled={detail.is_save}
                   loading={resSaveFavorite.isLoading}
@@ -104,7 +104,7 @@ const DetailBook = () => {
                 >
                   Save to Favorite
                 </Button>
-                <Button leftSection={<FaPlus />} bg={"primary.0"}>
+                <Button leftSection={<FaPlus />} bg={"success.9"}>
                   Borrow
                 </Button>
               </Group>

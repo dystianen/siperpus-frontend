@@ -14,7 +14,7 @@ const FavoriteBooks = () => {
 
   return (
     <Container size={"lg"}>
-      <Text fw={600} fz={40} mb={24} c={"primary.1"}>
+      <Text fw={600} fz={40} mb={24} c={"neutral.8"}>
         Favorite Books
       </Text>
 
@@ -22,7 +22,7 @@ const FavoriteBooks = () => {
         {isSuccess && collections!.length > 0 ? (
           <Grid>
             {collections?.map((it, index) => (
-              <Grid.Col key={index} span={3}>
+              <Grid.Col key={index} span={{ base: 6, md: 4, lg: 3 }}>
                 <CardBook item={it} />
               </Grid.Col>
             ))}

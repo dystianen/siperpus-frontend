@@ -97,7 +97,7 @@ const PopupRegister = ({ opened, close }: PopupLoginTypes) => {
           {...getInputProps("address")}
         />
 
-        <Button bg={"primary.0"} fullWidth onClick={() => handleSubmit()}>
+        <Button bg={"success.9"} fullWidth onClick={() => handleSubmit()}>
           Register
         </Button>
         <Text ta={"center"} fz={14}>

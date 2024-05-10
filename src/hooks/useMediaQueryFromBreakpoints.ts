@@ -1,3 +1,4 @@
+"use client";
 import { useMediaQuery } from "@mantine/hooks";
 import { MantineSize, useMantineTheme } from "@mantine/core";
 

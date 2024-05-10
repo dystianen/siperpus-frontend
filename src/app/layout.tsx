@@ -7,12 +7,12 @@ import {
   Box,
   ColorSchemeScript,
   MantineProvider,
-  createTheme,
 } from "@mantine/core";
 import Header from "@/components/Header";
 import { ReduxProvider } from "@/redux/Provider/ReduxProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Theme from "@/config/theme";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,24 +20,6 @@ export const metadata: Metadata = {
   title: "SIPERPUS",
   description: "Application to borrow books",
 };
-
-const theme = createTheme({
-  /** Put your mantine theme override here */
-  colors: {
-    primary: [
-      "#557153",
-      "#555555",
-      "#F7EE23",
-      "#FFFFFF",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-    ],
-  },
-});
 
 export default function RootLayout({
   children,
@@ -51,7 +33,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ReduxProvider>
-          <MantineProvider theme={theme} defaultColorScheme={"light"}>
+          <MantineProvider theme={Theme} defaultColorScheme={"light"}>
             <Header />
             <Box mt={100}>{children}</Box>
 

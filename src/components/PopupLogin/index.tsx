@@ -87,7 +87,7 @@ const PopupLogin = ({ opened, close }: PopupLoginTypes) => {
           {...getInputProps("password")}
         />
 
-        <Button bg={"primary.0"} fullWidth onClick={() => handleSubmit()}>
+        <Button bg={"success.9"} fullWidth onClick={() => handleSubmit()}>
           Login
         </Button>
         <Text ta={"center"} fz={14}>

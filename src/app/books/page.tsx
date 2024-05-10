@@ -30,8 +30,8 @@ export default function Categories() {
   return (
     <Box h={"80vh"} mt={100}>
       <Container size={"lg"}>
-        <Group justify="space-between">
-          <Text fz={32} fw={600} mb={32}>
+        <Group justify="space-between" align="center" mb={16}>
+          <Text fz={32} fw={600}>
             Books
           </Text>
           <TextInput
@@ -42,10 +42,10 @@ export default function Categories() {
           />
         </Group>
         <Grid>
-          <Grid.Col span={2}>
+          <Grid.Col span={{ base: 12, lg: 2 }}>
             <Sidebar />
           </Grid.Col>
-          <Grid.Col span={10}>
+          <Grid.Col span={{ base: 12, lg: 10 }}>
             <RenderBooks isFetching={isFetching}>
               {isSuccess && books!.length > 0 ? (
                 <ScrollArea h={"72vh"} scrollbars="y" scrollbarSize={6}>

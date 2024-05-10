@@ -85,14 +85,11 @@ const Header = () => {
               </Menu.Target>
 
               <Menu.Dropdown>
-                <Menu.Item>
-                  <Text c={"primary.1"}>Profile</Text>
-                </Menu.Item>
                 <Menu.Item onClick={() => router.push("/favorite")}>
-                  <Text c={"primary.1"}>Favorite</Text>
+                  <Text c={"neutral.8"}>Favorite</Text>
                 </Menu.Item>
                 <Menu.Item onClick={() => router.push("/borrowed")}>
-                  <Text c={"primary.1"}>Borrowed</Text>
+                  <Text c={"neutral.8"}>Borrowed</Text>
                 </Menu.Item>
                 <Menu.Item
                   onClick={() => {
@@ -100,13 +97,13 @@ const Header = () => {
                     removeToken();
                   }}
                 >
-                  <Text c={"primary.1"}>Logout</Text>
+                  <Text c={"neutral.8"}>Logout</Text>
                 </Menu.Item>
               </Menu.Dropdown>
             </Menu>
           ) : (
             <Button
-              bg={"primary.0"}
+              bg={"success.9"}
               radius={"xl"}
               onClick={() => setOpenPopupLogin(true)}
             >

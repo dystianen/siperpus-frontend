@@ -20,6 +20,9 @@ const ParticleAbsolute = ({ src, position, w, h }: ParticleStarAbsoluteType) => 
     <Box
       pos="absolute"
       {...position}
+      style={{
+        zIndex: 1
+      }}
     >
       <Image
         src={src}

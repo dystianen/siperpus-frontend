@@ -1,4 +1,4 @@
-import { Box, Group, Stack, Text } from "@mantine/core";
+import { Box, Flex, Group, Stack, Text } from "@mantine/core";
 import ParticleAbsolute from "../ParticleAbsolute";
 import { Carousel } from "@mantine/carousel";
 import Image from "next/image";
@@ -16,7 +16,7 @@ const Testimonials = () => {
         position={{ top: -100, left: -50 }}
       />
 
-      <Text fw={600} fz={40} c={"primary.1"} ta={"center"}>
+      <Text fw={600} fz={40} c={"neutral.8"} ta={"center"}>
         Testimonials
       </Text>
 
@@ -26,12 +26,17 @@ const Testimonials = () => {
         loop
         align={"center"}
         mt={32}
+        styles={{
+          indicators: {
+            bottom: -32
+          }
+        }}
       >
-        {reviews?.map((it, index) => (
-          <>
-            {it.review !== "" && (
+        {reviews?.map(
+          (it, index) =>
+            it.review !== "" && (
               <Carousel.Slide key={index}>
-                <Group wrap={"nowrap"}>
+                <Flex direction={{ base: "column", lg: "row" }}>
                   <Image
                     src={"/fikri.png"}
                     width={412}
@@ -40,7 +45,7 @@ const Testimonials = () => {
                   />
 
                   <Stack gap={0} ml={32}>
-                    <Text c={"primary.1"} fz={24}>
+                    <Text c={"neutral.8"} fz={24}>
                       &quot;{it.review}&quot; 
                     </Text>
                     <Group align="center" gap={4}>
@@ -55,11 +60,10 @@ const Testimonials = () => {
                       </Text>
                     </Group>
                   </Stack>
-                </Group>
+                </Flex>
               </Carousel.Slide>
-            )}
-          </>
-        ))}
+            )
+        )}
       </Carousel>
     </Box>
   );

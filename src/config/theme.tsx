@@ -1,6 +1,6 @@
 import { MantineThemeOverride, em } from "@mantine/core";
 
-export const kpTheme: MantineThemeOverride = {
+export const Theme: MantineThemeOverride = {
   // Typography base
   fontFamily:
     "Poppins, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji",
@@ -63,7 +63,7 @@ export const kpTheme: MantineThemeOverride = {
       "#A5B0BB", // 5 (grey Arrow right) <= This is regarding figma color design
       "#B0B6BD",
       "#868E96", // 7 <= This is regarding figma color design
-      "#4D545C", // <= This is regarding figma color design
+      "#555555", // <= This is regarding figma color design
       "#1D252D", // <= This is regarding figma color design,
     ],
   },
@@ -76,68 +76,6 @@ export const kpTheme: MantineThemeOverride = {
       "20px": "20px",
     },
     colors: {
-      successLight2: "#E3FCE5",
-      primary: "#0055B8",
-      "primary-1": "#F5FAFF",
-      "primary-2": "#EFF7FF",
-      "primary-3": "#D6EBFF",
-      "primary-4": "#007BE0",
-      "primary-5": "#002E6D",
-      "primary-6": "#002252",
-      "primary-7": "#E2EEFF",
-      "primary-8": "#1067CD",
-      "primary-9": "#08247C",
-      "primary-10": "#529AFF",
-      "primary-11": "#0045A5",
-      "primary-12": "#FEEFEF",
-      "primary-13": "#EBF2FD",
-      "primary-14": "#0971B7",
-      "primary-15": "#2BAAE2",
-      "primary-16": "#2C6DE6",
-      "primary-17": "#184AA4",
-      "primary-18": "#91CDFF",
-      "primary-19": "#BFD8EF",
-      "primary-20": "#D6EBFF",
-      "primary-21": "#F5F5F5",
-      secondary: "#FFCE00",
-      "secondary-1": "#FFF7D7",
-      "secondary-2": "#FFE784",
-      "secondary-3": "#998122",
-      "secondary-4": "#FF9E16",
-      "secondary-5": "#FFEBB4",
-      "secondary-6": "#FFEE00",
-      danger: "#D92037",
-      "danger-1": "#FEE6E9",
-      "danger-2": "#F7B1B9",
-      "danger-3": "#A41929",
-      "danger-4": "#fa5252",
-      "danger-5": "#FE2323",
-      success: "#019859",
-      "success-1": "#E3FCE5",
-      "success-2": "#09B95A",
-      "success-3": "#015B35",
-      "success-4": "#00B21C",
-      "success-5": "#15bd2f",
-      "neutral-1": "#FFFFFF",
-      "neutral-2": "#F5F7F9",
-      "neutral-3": "#E7EBEE",
-      "neutral-4": "#CED4DA",
-      "neutral-5": "#A5B0BB",
-      "neutral-6": "#868E96",
-      "neutral-7": "#4D545C",
-      "neutral-8": "#1D252D",
-      "neutral-9": "#4C5E6E",
-      "neutral-10": "#ECF0F3",
-      "neutral-11": "#8996A4",
-      "neutral-12": "#B3C1CF",
-      "neutral-13": "#ADB5BD",
-      "neutral-14": "#353535",
-      "Light Blue/Light 2": "#E1F4FE",
-      "Green/Light 2": "#E6F5EE",
-      "Pink/Light 2": "#FFF2F7",
-      "Pink/Light 3": "#fff8e1",
-      "Violet/Light 2": "#F0EEFC",
-      "purple-1": "#B4ACEF",
     },
   },
   // Responsive breakpoint
@@ -163,4 +101,4 @@ export const kpTheme: MantineThemeOverride = {
   },
 };
 
-export default kpTheme;
+export default Theme;

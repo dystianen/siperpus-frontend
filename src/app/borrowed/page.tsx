@@ -107,7 +107,7 @@ const Borrowed = () => {
 
   return (
     <Container size={"lg"}>
-      <Text fw={600} fz={40} mb={24} c={"primary.1"}>
+      <Text fw={600} fz={40} mb={24} c={"neutral.8"}>
         Borrowed Books
       </Text>
 
@@ -130,7 +130,7 @@ const Borrowed = () => {
                   <Text>status : {it.status}</Text>
                   {it.status === "borrowed" && (
                     <Button
-                      color={"primary.0"}
+                      color={"success.9"}
                       size="xs"
                       w={"max-content"}
                       variant="outline"
@@ -184,7 +184,7 @@ const Borrowed = () => {
             </Button>
             <Button
               px={32}
-              color="primary.0"
+              color="success.9"
               onClick={() => renderPay.onClick()}
             >
               {renderPay.buttonLabel}
@@ -240,7 +240,7 @@ const Borrowed = () => {
             </Button>
             <Button
               px={32}
-              color="primary.0"
+              color="success.9"
               loading={resReturnBook.isLoading}
               onClick={() => handleSubmit()}
               disabled={!file}

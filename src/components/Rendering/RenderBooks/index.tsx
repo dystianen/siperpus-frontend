@@ -6,16 +6,13 @@ type conditionalRenderingTypes = {
   isFetching: boolean;
   children: ReactNode;
 };
-const RenderBooks = ({
-  isFetching,
-  children,
-}: conditionalRenderingTypes) => {
+const RenderBooks = ({ isFetching, children }: conditionalRenderingTypes) => {
   return (
     <Box>
       {isFetching ? (
         <Grid>
           {Array.from({ length: 4 }).map((_, index) => (
-            <Grid.Col key={index} span={3}>
+            <Grid.Col key={index} span={{ base: 6, md: 4, lg: 3 }}>
               <Skeleton w={"100%"} h={300} radius={"md"} />
             </Grid.Col>
           ))}
