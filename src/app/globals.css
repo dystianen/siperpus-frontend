@@ -6,6 +6,6 @@
 
 html,
 body {
-  background: #DDDDDD;
-  color: #555555;
+  background: #DDDDDD !important;
+  color: #555555 !important;
 }
