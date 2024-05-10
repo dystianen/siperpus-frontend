@@ -15,7 +15,7 @@ export const useMediaQueryFromBreakpoints: useMediaQueryFromBreakpointsParams =
       `(${query}: ${theme.breakpoints[breakpoint]})`,
       undefined,
       {
-        getInitialValueInEffect: false,
+        getInitialValueInEffect: true,
       }
     );
 

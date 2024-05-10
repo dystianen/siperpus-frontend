@@ -4,12 +4,12 @@ import {
   Button,
   Container,
   Group,
+  Image,
   Menu,
   Text,
   UnstyledButton,
   rem,
 } from "@mantine/core";
-import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 import PopupLogin from "../PopupLogin";
@@ -54,8 +54,13 @@ const Header = () => {
       }}
     >
       <Container size={"lg"}>
-        <Group justify="space-between" wrap="nowrap">
-          <Image src={"/logo.png"} width={100} height={90} alt="logo" />
+        <Group justify="space-between">
+          <Image
+            src={"/logo.png"}
+            w={{ base: 70, md: 100 }}
+            h={{ base: 70, md: 90 }}
+            alt="logo"
+          />
           <Group>
             {menu.map((it, index) => (
               <UnstyledButton
@@ -76,7 +81,7 @@ const Header = () => {
               <Menu.Target>
                 <UnstyledButton>
                   <Group align="center">
-                    <Text fw={600} fz={20}>
+                    <Text fw={600} fz={{ base: 16, md: 20 }}>
                       Hi, {dataToken?.user_name}
                     </Text>
                     <FaChevronDown />
@@ -106,6 +111,7 @@ const Header = () => {
               bg={"success.9"}
               radius={"xl"}
               onClick={() => setOpenPopupLogin(true)}
+              fz={{ base: "xs", md: "md" }}
             >
               Login/Register
             </Button>

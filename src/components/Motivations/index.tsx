@@ -1,13 +1,15 @@
 import { Box, Text } from "@mantine/core";
 import ParticleAbsolute from "../ParticleAbsolute";
+import { useMediaQueryFromBreakpoints } from "@/hooks/useMediaQueryFromBreakpoints";
 
 const Motivations = () => {
+  const isMobile = useMediaQueryFromBreakpoints();
   return (
     <Box pos={"relative"} my={100}>
       <Box
         pos={"relative"}
         style={{
-          zIndex: 2
+          zIndex: 2,
         }}
       >
         <Text fw={600} fz={40} c={"neutral.8"} ta={"center"}>
@@ -20,7 +22,7 @@ const Motivations = () => {
           c={"success.9"}
           lh={{ base: "50px", md: "120px" }}
           style={{
-            zIndex: 2
+            zIndex: 2,
           }}
         >
           &quot;Today a <span style={{ fontWeight: 700 }}>Reader</span>, <br />{" "}
@@ -29,18 +31,22 @@ const Motivations = () => {
         </Text>
       </Box>
 
-      <ParticleAbsolute
-        src="/particle2.png"
-        w={200}
-        h={200}
-        position={{ top: 10, left: -100 }}
-      />
-      <ParticleAbsolute
-        src="/particle3.png"
-        w={200}
-        h={170}
-        position={{ top: 10, right: 0 }}
-      />
+      {!isMobile && (
+        <>
+          <ParticleAbsolute
+            src="/particle2.png"
+            w={200}
+            h={200}
+            position={{ top: 10, left: -100 }}
+          />
+          <ParticleAbsolute
+            src="/particle3.png"
+            w={200}
+            h={170}
+            position={{ top: 10, right: 0 }}
+          />
+        </>
+      )}
     </Box>
   );
 };
