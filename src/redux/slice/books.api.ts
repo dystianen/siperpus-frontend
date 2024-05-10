@@ -89,6 +89,17 @@ export const booksApi = createApi({
       }),
       transformResponse: (response: responseTotalFineTypes) => response.data,
     }),
+    postReviewBook: builder.mutation<
+      any,
+      { book_id: string; rating: number; review: string }
+    >({
+      query: (payload) => ({
+        url: "review",
+        method: "POST",
+        body: payload,
+      }),
+      invalidatesTags: ["LIST_BORROWED"],
+    }),
   }),
 });
 
@@ -102,4 +113,5 @@ export const {
   useGetBorrowedBooksQuery,
   usePostReturnBookMutation,
   useLazyGetTotalFineQuery,
+  usePostReviewBookMutation,
 } = booksApi;

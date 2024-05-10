@@ -4,10 +4,10 @@ import {
   useGetBorrowedBooksQuery,
   useLazyGetTotalFineQuery,
   usePostReturnBookMutation,
+  usePostReviewBookMutation,
 } from "@/redux/slice/books.api";
 import {
   ActionIcon,
-  Box,
   Button,
   Card,
   Container,
@@ -19,15 +19,21 @@ import {
   Stack,
   Text,
   Textarea,
-  UnstyledButton,
 } from "@mantine/core";
 import Image from "next/image";
 import dayjs from "dayjs";
 import { useDisclosure } from "@mantine/hooks";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { toast } from "react-toastify";
 import { MdFileCopy } from "react-icons/md";
 import { borrowedTypes } from "@/types/books";
+import { useForm, yupResolver } from "@mantine/form";
+import * as y from "yup";
+
+const schemaValidation = y.object().shape({
+  rating: y.number().required("Rating is required!"),
+  review: y.string().required("Review is required!"),
+});
 
 const Borrowed = () => {
   const { data: borrowed } = useGetBorrowedBooksQuery();
@@ -39,40 +45,65 @@ const Borrowed = () => {
   const [file, setFile] = useState<File | null>(null);
   const [returnBook, resReturnBook] = usePostReturnBookMutation();
   const [getTotalFine, resTotalFine] = useLazyGetTotalFineQuery();
+  const isTotalFine = Number(resTotalFine.data?.total_fine) > 0;
+  const [submitReview] = usePostReviewBookMutation();
 
-  const handleReview = (item: borrowedTypes) => {
+  const { getInputProps, onSubmit } = useForm({
+    validate: yupResolver(schemaValidation),
+    initialValues: {
+      rating: 0,
+      review: "",
+    },
+  });
+
+  const handleOpenPopupReview = (item: borrowedTypes) => {
     setDetailBook(item);
-    getTotalFine(detailBook.borrow_id)
+    getTotalFine(item.borrow_id)
       .unwrap()
       .then(() => {
         openReview();
       });
   };
 
-  const handlePay = () => {
-    closeReview();
-    openPayment();
-  };
+  const handlePay = onSubmit((values) => {
+    submitReview({
+      book_id: detailBook.book_id,
+      rating: values.rating,
+      review: values.review,
+    })
+      .unwrap()
+      .then(() => {
+        closeReview();
+        openPayment();
+      });
+  });
 
-  const handleSubmit = () => {
+  const handleSubmit = onSubmit((values) => {
+    if (!isTotalFine) {
+      submitReview({
+        book_id: detailBook.book_id,
+        rating: values.rating,
+        review: values.review,
+      });
+    }
+
     returnBook(detailBook.borrow_id)
       .unwrap()
       .then(() => {
         closePayment();
         toast("Returned book successfully!");
       });
-  };
+  });
 
-  const renderPay =
-    Number(resTotalFine.data?.total_fine) > 0
-      ? {
-          buttonLabel: "Pay",
-          onClick: handlePay,
-        }
-      : {
-          buttonLabel: "Return",
-          onClick: handleSubmit,
-        };
+  const renderPay = isTotalFine
+    ? {
+        buttonLabel: "Pay",
+        onClick: handlePay,
+      }
+    : {
+        buttonLabel: "Return",
+        onClick: handleSubmit,
+      };
 
   return (
     <Container size={"lg"}>
@@ -103,7 +134,7 @@ const Borrowed = () => {
                       size="xs"
                       w={"max-content"}
                       variant="outline"
-                      onClick={() => handleReview(it)}
+                      onClick={() => handleOpenPopupReview(it)}
                     >
                       Return
                     </Button>
@@ -124,29 +155,38 @@ const Borrowed = () => {
       >
         <Stack align="center">
           <Card radius={"md"} p={0}>
-          <Image
-            src={embedImage(detailBook.thumbnail)}
-            width={200}
-            height={270}
-            alt={detailBook.title}
-          />
+            <Image
+              src={embedImage(detailBook.thumbnail)}
+              width={200}
+              height={270}
+              alt={detailBook.title}
+            />
           </Card>
 
           <Stack gap={2} align="center">
             <Text fw={600}>Rate for Book</Text>
-            <Rating size={"xl"} defaultValue={2} />
+            <Rating {...getInputProps("rating")} size={"xl"} />
           </Stack>
 
           <Stack gap={2} align="center" w={"80%"}>
             <Text fw={600}>Review for Book</Text>
-            <Textarea rows={4} w={"100%"} placeholder="commentar..." />
+            <Textarea
+              {...getInputProps("review")}
+              rows={4}
+              w={"100%"}
+              placeholder="commentar..."
+            />
           </Stack>
 
           <Group>
             <Button px={32} color="red" onClick={closeReview}>
               Cancel
             </Button>
-            <Button px={32} color="primary.0" onClick={renderPay.onClick}>
+            <Button
+              px={32}
+              color="primary.0"
+              onClick={() => renderPay.onClick()}
+            >
               {renderPay.buttonLabel}
             </Button>
           </Group>
@@ -202,7 +242,7 @@ const Borrowed = () => {
               px={32}
               color="primary.0"
               loading={resReturnBook.isLoading}
-              onClick={handleSubmit}
+              onClick={() => handleSubmit()}
               disabled={!file}
             >
               Return
