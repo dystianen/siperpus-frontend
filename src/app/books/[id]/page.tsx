@@ -1,12 +1,20 @@
 "use client";
 import { embedImage } from "@/helper/embedImage";
 import {
-  useGetCollectionFavoriteBooksQuery,
   useGetDetailBookQuery,
   usePostAddFavoriteMutation,
+  usePostBorrowedBookMutation,
 } from "@/redux/slice/books.api";
-import { Button, Container, Grid, Group, Stack, Text } from "@mantine/core";
-import { useParams } from "next/navigation";
+import {
+  Button,
+  Container,
+  Grid,
+  Group,
+  Modal,
+  Stack,
+  Text,
+} from "@mantine/core";
+import { useParams, useRouter } from "next/navigation";
 import { BsBookmarkPlusFill } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa6";
 import { useCheckLoggedIn } from "@/hooks/useCheckLoggedIn";
@@ -15,14 +23,17 @@ import { openedPopupLogin } from "@/config/GlobalState";
 import { toast } from "react-toastify";
 import Image from "next/image";
 import RenderDetailBook from "@/components/Rendering/RenderDetailBook";
+import { useDisclosure } from "@mantine/hooks";
 
 const DetailBook = () => {
   const isLoggedIn = useCheckLoggedIn();
   const setOpenPopupLogin = useSetAtom(openedPopupLogin);
+  const router = useRouter();
   const { id } = useParams();
   const { data: detail, isFetching } = useGetDetailBookQuery(id as string);
-  const { data: favorite } = useGetCollectionFavoriteBooksQuery();
   const [postFavorite, resSaveFavorite] = usePostAddFavoriteMutation();
+  const [submitBorrow, resSubmitBorrow] = usePostBorrowedBookMutation();
+  const [opened, { open, close }] = useDisclosure(false);
 
   const bookData = [
     {
@@ -55,8 +66,22 @@ const DetailBook = () => {
     }
   };
 
+  const handleBorrowed = () => {
+    if (isLoggedIn) {
+      submitBorrow(detail?.book_id as string)
+        .unwrap()
+        .then(() => {
+          toast("Borrow book successfully!");
+          close();
+          router.push("/borrowed");
+        });
+    } else {
+      setOpenPopupLogin(true);
+    }
+  };
+
   return (
-    <Container size={"lg"}>
+    <Container size={"lg"} mb={50}>
       <Text fw={600} fz={40} c={"neutral.8"}>
         Detail Book
       </Text>
@@ -104,7 +129,11 @@ const DetailBook = () => {
                 >
                   Save to Favorite
                 </Button>
-                <Button leftSection={<FaPlus />} bg={"success.9"}>
+                <Button
+                  leftSection={<FaPlus />}
+                  bg={"success.9"}
+                  onClick={open}
+                >
                   Borrow
                 </Button>
               </Group>
@@ -112,6 +141,26 @@ const DetailBook = () => {
           </Group>
         )}
       </RenderDetailBook>
+
+      <Modal opened={opened} onClose={close} centered withCloseButton={false}>
+        <Text fw={600} fz={24} ta={"center"}>
+          Are you sure you to borrow &quot;{detail?.title}&quot; book?
+        </Text>
+
+        <Group my={16} justify="center">
+          <Button px={32} color="red" onClick={close}>
+            Cancel
+          </Button>
+          <Button
+            px={32}
+            color="success.9"
+            loading={resSubmitBorrow.isLoading}
+            onClick={handleBorrowed}
+          >
+            Oke
+          </Button>
+        </Group>
+      </Modal>
     </Container>
   );
 };

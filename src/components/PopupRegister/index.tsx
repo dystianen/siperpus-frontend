@@ -102,7 +102,10 @@ const PopupRegister = ({ opened, close }: PopupLoginTypes) => {
         </Button>
         <Text ta={"center"} fz={14}>
           Have an account?{" "}
-          <UnstyledButton onClick={handleClickLoginNow}>
+          <UnstyledButton
+            onClick={handleClickLoginNow}
+            style={{ textDecoration: "underline" }}
+          >
             Login now!
           </UnstyledButton>
         </Text>

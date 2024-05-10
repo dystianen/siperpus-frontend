@@ -8,6 +8,7 @@ import {
 } from "@/redux/slice/books.api";
 import {
   ActionIcon,
+  Badge,
   Button,
   Card,
   Container,
@@ -90,6 +91,7 @@ const Borrowed = () => {
     returnBook(detailBook.borrow_id)
       .unwrap()
       .then(() => {
+        closeReview();
         closePayment();
         toast("Returned book successfully!");
       });
@@ -105,9 +107,29 @@ const Borrowed = () => {
         onClick: handleSubmit,
       };
 
+  const getColorBadge = (status: string) => {
+    let color = "";
+    switch (status) {
+      case "process_borrowed":
+        color = "yellow";
+        break;
+      case "borrowed":
+        color = "blue";
+        break;
+      case "process_return":
+        color = "orange";
+        break;
+      case "done":
+        color = "lime";
+        break;
+    }
+
+    return color;
+  };
+
   return (
     <Container size={"lg"}>
-      <Text fw={600} fz={40} mb={24} c={"neutral.8"}>
+      <Text fw={600} fz={32} mb={24} c={"neutral.8"}>
         Borrowed Books
       </Text>
 
@@ -127,7 +149,7 @@ const Borrowed = () => {
                   <Text>
                     Due date : {dayjs(it.due_date).format("DD, MMM YYYY")}
                   </Text>
-                  <Text>status : {it.status}</Text>
+                  <Text>status : <Badge color={getColorBadge(it.status)}>{it.status.replace("_", " ")}</Badge></Text>
                   {it.status === "borrowed" && (
                     <Button
                       color={"success.9"}

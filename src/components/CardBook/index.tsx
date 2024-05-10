@@ -10,14 +10,14 @@ const CardBook = ({ item }: { item: bookTypes }) => {
 
   return (
     <UnstyledButton onClick={() => router.push(`/books/${item.book_id}`)}>
-      <Stack gap={3} align="center">
+      <Stack gap={3} align="center" justify="center">
         <Image
           src={embedImage(item.thumbnail)}
-          width={180}
-          height={269}
+          width={200}
+          height={275}
           alt="book"
         />
-        <Text ta={"center"} fw={600}>
+        <Text ta={"center"} fw={600} lineClamp={1} px={16}>
           {item.title}
         </Text>
         <Group justify="center" align="center" gap={3}>
