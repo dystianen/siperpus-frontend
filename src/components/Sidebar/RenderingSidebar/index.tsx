@@ -13,9 +13,9 @@ const RenderingSidebar = ({
   return (
     <Box pos={"relative"}>
       {isFetching ? (
-        <Flex direction={{ base: "row", lg: "column" }}>
+        <Flex direction={{ base: "row", lg: "column" }} gap={"xs"}>
           {Array.from({ length: 6 }).map((_, index) => (
-            <Skeleton key={index} w={180} h={50} radius={"md"} />
+            <Skeleton key={index} w={150} h={30} radius={"md"} />
           ))}
         </Flex>
       ) : (

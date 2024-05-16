@@ -9,6 +9,7 @@ import {
   Text,
   UnstyledButton,
   rem,
+  useMantineTheme,
 } from "@mantine/core";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
@@ -25,6 +26,7 @@ const Header = () => {
   const router = useRouter();
   const dataToken = useParserToken();
   const pathname = usePathname();
+  const theme = useMantineTheme();
   const [scroll] = useWindowScroll();
   const [token, _, removeToken] = useLocalStorage({ key: "token" });
   const [openedLogin, setOpenPopupLogin] = useAtom(openedPopupLogin);
@@ -47,10 +49,10 @@ const Header = () => {
       w={"100%"}
       h={90}
       top={0}
-      bg={"#DDDDDD"}
+      bg={"#0b131d"}
       style={{
         zIndex: 99,
-        boxShadow: scroll.y > 50 ? `0 ${rem(3)} ${rem(10)} 0 #0000001a` : "",
+        boxShadow: scroll.y > 50 ? `0 ${rem(3)} ${rem(10)} 0 rgba(255, 255, 255, .1)` : "",
       }}
     >
       <Container size={"lg"}>
@@ -68,7 +70,7 @@ const Header = () => {
                 onClick={() => router.push(it.href)}
                 fw={500}
                 style={{
-                  borderBottom: pathname === it.href ? "2px solid #557153" : "",
+                  borderBottom: pathname === it.href ? `2px solid ${theme.colors.success[3]}` : "",
                 }}
               >
                 {it.text}

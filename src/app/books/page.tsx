@@ -28,7 +28,7 @@ export default function Categories() {
   } = useGetBooksQuery({ category, search });
 
   return (
-    <Box h={"80vh"} mt={100}>
+    <Box h={{ base: "90vh", md: "80vh" }} mt={100}>
       <Container size={"lg"}>
         <Group justify="space-between" align="center" mb={16}>
           <Text fz={32} fw={600}>
@@ -39,6 +39,11 @@ export default function Categories() {
             radius={"md"}
             leftSection={<LuSearch />}
             onChange={(e: any) => setSearch(e.target.value)}
+            styles={{
+              input: {
+                background: "rgba(255,255,255,.1)!important",
+              },
+            }}
           />
         </Group>
         <Grid>
@@ -49,9 +54,9 @@ export default function Categories() {
             <RenderBooks isFetching={isFetching}>
               {isSuccess && books!.length > 0 ? (
                 <ScrollArea h={"72vh"} scrollbars="y" scrollbarSize={6}>
-                  <Grid>
+                  <Grid gutter={"xl"}>
                     {books?.map((it, index) => (
-                      <Grid.Col key={index} span={{ base: 1, md: 4, lg: 3 }}>
+                      <Grid.Col key={index} span={{ base: 6, md: 4, lg: 3 }}>
                         <CardBook item={it} />
                       </Grid.Col>
                     ))}

@@ -12,14 +12,14 @@ const Motivations = () => {
           zIndex: 2,
         }}
       >
-        <Text fw={600} fz={40} c={"neutral.8"} ta={"center"}>
+        <Text fw={600} fz={40} c={"neutral.1"} ta={"center"}>
           Motivations
         </Text>
 
         <Text
           fz={{ base: 40, md: 80 }}
           ta={"center"}
-          c={"success.9"}
+          c={"success.3"}
           lh={{ base: "50px", md: "120px" }}
           style={{
             zIndex: 2,

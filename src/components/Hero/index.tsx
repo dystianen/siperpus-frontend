@@ -30,11 +30,13 @@ const Hero = () => {
         justify={"space-between"}
         align={"center"}
         direction={{ base: "column-reverse", md: "row" }}
+        pos={"relative"}
+        style={{ zIndex: 1 }}
       >
         <Stack>
           <Text
             fz={{ base: 50, md: 80 }}
-            c={"success.9"}
+            c={"success.3"}
             lh={{ base: "60px", md: "100px" }}
           >
             Let’s <span style={{ fontWeight: 700 }}>Improve</span> <br />{" "}

@@ -2,12 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "@mantine/core/styles.css";
-import '@mantine/carousel/styles.css';
-import {
-  Box,
-  ColorSchemeScript,
-  MantineProvider,
-} from "@mantine/core";
+import "@mantine/carousel/styles.css";
+import { Box, ColorSchemeScript, Image, MantineProvider } from "@mantine/core";
 import Header from "@/components/Header";
 import { ReduxProvider } from "@/redux/Provider/ReduxProvider";
 import { ToastContainer } from "react-toastify";
@@ -35,7 +31,16 @@ export default function RootLayout({
         <ReduxProvider>
           <MantineProvider theme={Theme} defaultColorScheme={"light"}>
             <Header />
-            <Box mt={100}>{children}</Box>
+            <Box mt={100}>
+              <Image
+                src={"bg-particle.svg"}
+                alt="bg-particle"
+                pos={"fixed"}
+                h={"100vh"}
+                style={{ zIndex: 0 }}
+              />
+              {children}
+            </Box>
 
             <ToastContainer
               position="bottom-right"

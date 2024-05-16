@@ -16,7 +16,7 @@ const Testimonials = () => {
         position={{ top: -100, left: -50 }}
       />
 
-      <Text fw={600} fz={40} c={"neutral.8"} ta={"center"}>
+      <Text fw={600} fz={40} c={"neutral.1"} ta={"center"}>
         Testimonials
       </Text>
 
@@ -45,7 +45,7 @@ const Testimonials = () => {
                   />
 
                   <Stack gap={0} ml={32}>
-                    <Text c={"neutral.8"} fz={24}>
+                    <Text c={"neutral.5"} fz={24}>
                       &quot;{it.review}&quot; 
                     </Text>
                     <Group align="center" gap={4}>
@@ -55,7 +55,7 @@ const Testimonials = () => {
                         height={30}
                         alt="star"
                       />
-                      <Text fw={600} fz={24}>
+                      <Text fw={600} fz={24} c={"neutral.5"}>
                         {it.rating}/5
                       </Text>
                     </Group>
