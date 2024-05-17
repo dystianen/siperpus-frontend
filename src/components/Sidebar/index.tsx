@@ -9,7 +9,7 @@ import {
 import { motion } from "framer-motion";
 import { useGetCategoriesQuery } from "@/redux/slice/books.api";
 import { useAtom } from "jotai";
-import { activeSidebar } from "@/config/GlobalState";
+import { activeSidebar } from "@/store/GlobalState";
 import RenderingSidebar from "./RenderingSidebar";
 
 export const Sidebar = () => {

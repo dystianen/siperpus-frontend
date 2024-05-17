@@ -16,7 +16,7 @@ import React from "react";
 import PopupLogin from "../PopupLogin";
 import PopupRegister from "../PopupRegister";
 import { useAtom } from "jotai";
-import { openedPopupLogin, openedPopupRegister } from "@/config/GlobalState";
+import { openedPopupLogin, openedPopupRegister } from "@/store/GlobalState";
 import { useLocalStorage, useWindowScroll } from "@mantine/hooks";
 import { useParserToken } from "@/hooks/useParserToken";
 import { FaChevronDown } from "react-icons/fa6";

@@ -3,7 +3,7 @@ import CardBook from "@/components/CardBook";
 import RenderBooks from "@/components/Rendering/RenderBooks";
 import EmptyState from "@/components/EmptyState";
 import { Sidebar } from "@/components/Sidebar";
-import { activeSidebar } from "@/config/GlobalState";
+import { activeSidebar } from "@/store/GlobalState";
 import { useGetBooksQuery } from "@/redux/slice/books.api";
 import {
   Box,
@@ -31,7 +31,7 @@ export default function Categories() {
     <Box h={{ base: "90vh", md: "80vh" }} mt={100}>
       <Container size={"lg"}>
         <Group justify="space-between" align="center" mb={16}>
-          <Text fz={32} fw={600}>
+          <Text fz={32} fw={600} c={"neutral.3"}>
             Books
           </Text>
           <TextInput
@@ -39,11 +39,6 @@ export default function Categories() {
             radius={"md"}
             leftSection={<LuSearch />}
             onChange={(e: any) => setSearch(e.target.value)}
-            styles={{
-              input: {
-                background: "rgba(255,255,255,.1)!important",
-              },
-            }}
           />
         </Group>
         <Grid>
@@ -54,7 +49,14 @@ export default function Categories() {
             <RenderBooks isFetching={isFetching}>
               {isSuccess && books!.length > 0 ? (
                 <ScrollArea h={"72vh"} scrollbars="y" scrollbarSize={6}>
-                  <Grid gutter={"xl"}>
+                  <Grid
+                    gutter={"xl"}
+                    styles={{
+                      inner: {
+                        padding: 10,
+                      },
+                    }}
+                  >
                     {books?.map((it, index) => (
                       <Grid.Col key={index} span={{ base: 6, md: 4, lg: 3 }}>
                         <CardBook item={it} />

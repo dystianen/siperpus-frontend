@@ -1,6 +1,8 @@
+"use client";
 import { Box, Text } from "@mantine/core";
 import ParticleAbsolute from "../ParticleAbsolute";
 import { useMediaQueryFromBreakpoints } from "@/hooks/useMediaQueryFromBreakpoints";
+import { motion } from "framer-motion";
 
 const Motivations = () => {
   const isMobile = useMediaQueryFromBreakpoints();
@@ -12,23 +14,40 @@ const Motivations = () => {
           zIndex: 2,
         }}
       >
-        <Text fw={600} fz={40} c={"neutral.1"} ta={"center"}>
+        <Text fw={600} fz={32} c={"neutral.3"} ta={"center"}>
           Motivations
         </Text>
 
-        <Text
-          fz={{ base: 40, md: 80 }}
-          ta={"center"}
-          c={"success.3"}
-          lh={{ base: "50px", md: "120px" }}
-          style={{
-            zIndex: 2,
+        <motion.div
+          initial={{
+            scale: 0.5,
+            opacity: 0,
+          }}
+          whileInView={{
+            scale: 1,
+            opacity: 1,
+          }}
+          transition={{
+            duration: 1,
+          }}
+          viewport={{
+            once: true,
           }}
         >
-          &quot;Today a <span style={{ fontWeight: 700 }}>Reader</span>, <br />{" "}
-          tomorrow a <span style={{ fontWeight: 700 }}>Leader</span>
-          .&quot; 
-        </Text>
+          <Text
+            fz={{ base: 40, md: 80 }}
+            ta={"center"}
+            c={"success.9"}
+            lh={{ base: "50px", md: "120px" }}
+            style={{
+              zIndex: 2,
+            }}
+          >
+            &quot;Today a <span style={{ fontWeight: 700 }}>Reader</span>,{" "}
+            <br /> tomorrow a <span style={{ fontWeight: 700 }}>Leader</span>
+            .&quot; 
+          </Text>
+        </motion.div>
       </Box>
 
       {!isMobile && (

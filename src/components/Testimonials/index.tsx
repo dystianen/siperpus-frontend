@@ -16,7 +16,7 @@ const Testimonials = () => {
         position={{ top: -100, left: -50 }}
       />
 
-      <Text fw={600} fz={40} c={"neutral.1"} ta={"center"}>
+      <Text fw={600} fz={32} c={"neutral.3"} ta={"center"}>
         Testimonials
       </Text>
 

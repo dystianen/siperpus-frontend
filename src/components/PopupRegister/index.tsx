@@ -1,4 +1,4 @@
-import { openedPopupLogin, openedPopupRegister } from "@/config/GlobalState";
+import { openedPopupLogin, openedPopupRegister } from "@/store/GlobalState";
 import { usePostRegisterMutation } from "@/redux/slice/auth.api";
 import {
   Button,
@@ -68,6 +68,14 @@ const PopupRegister = ({ opened, close }: PopupLoginTypes) => {
         </Text>
       }
       centered
+      styles={{
+        header: {
+          backgroundColor: "#0b131d",
+        },
+        content: {
+          backgroundColor: "#0b131d",
+        },
+      }}
     >
       <Stack>
         <TextInput

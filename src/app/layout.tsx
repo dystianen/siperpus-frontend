@@ -39,7 +39,7 @@ export default function RootLayout({
                 h={"100vh"}
                 style={{ zIndex: 0 }}
               />
-              {children}
+              <Box style={{ zIndex: 1 }}>{children}</Box>
             </Box>
 
             <ToastContainer

@@ -36,7 +36,7 @@ const Hero = () => {
         <Stack>
           <Text
             fz={{ base: 50, md: 80 }}
-            c={"success.3"}
+            c={"neutral.5"}
             lh={{ base: "60px", md: "100px" }}
           >
             Let’s <span style={{ fontWeight: 700 }}>Improve</span> <br />{" "}
@@ -49,7 +49,7 @@ const Hero = () => {
             onClick={() => router.push("/books")}
             rightSection={<FaArrowRight />}
             variant="outline"
-            color="success.9"
+            color="#0b131d"
             bg={"white"}
           >
             Explore Books Now
@@ -59,18 +59,18 @@ const Hero = () => {
               <Group gap={"xs"}>
                 <Image
                   src={"/star.svg"}
-                  w={{ base: 20, md: 35 }}
-                  h={{ base: 20, md: 35 }}
+                  w={{ base: 20, md: 30 }}
+                  h={{ base: 20, md: 30 }}
                   alt="star"
                 />
-                <Text fw={600} fz={{ base: 16, md: 24 }} c={"neutral.8"}>
+                <Text fw={600} fz={{ base: 16, md: 22 }} c={"#0b131d"}>
                   100K Users
                 </Text>
               </Group>
 
               <Avatar.Group>
                 {Array.from({ length: 4 }).map((_, index) => (
-                  <Avatar key={index} fz={{ base: "sm", md: "lg" }} />
+                  <Avatar key={index} src={"https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"} fz={{ base: "sm", md: "lg" }} />
                 ))}
                 <Avatar fz={{ base: "sm", md: "lg" }}>5+</Avatar>
               </Avatar.Group>

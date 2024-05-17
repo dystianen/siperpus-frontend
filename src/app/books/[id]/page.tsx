@@ -19,7 +19,7 @@ import { BsBookmarkPlusFill } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa6";
 import { useCheckLoggedIn } from "@/hooks/useCheckLoggedIn";
 import { useSetAtom } from "jotai";
-import { openedPopupLogin } from "@/config/GlobalState";
+import { openedPopupLogin } from "@/store/GlobalState";
 import { toast } from "react-toastify";
 import Image from "next/image";
 import RenderDetailBook from "@/components/Rendering/RenderDetailBook";
@@ -82,7 +82,7 @@ const DetailBook = () => {
 
   return (
     <Container size={"lg"} mb={50}>
-      <Text fw={600} fz={40} c={"neutral.8"}>
+      <Text fw={600} fz={32} c={"neutral.3"}>
         Detail Book
       </Text>
       <RenderDetailBook isFetching={isFetching}>
@@ -93,6 +93,9 @@ const DetailBook = () => {
               width={400}
               height={450}
               alt="book"
+              style={{
+                borderRadius: 10,
+              }}
             />
 
             <Stack>
@@ -102,18 +105,19 @@ const DetailBook = () => {
               {bookData.map((it, index) => (
                 <Grid key={index}>
                   <Grid.Col span={3}>
-                    <Text>{it.key}</Text>
+                    <Text c={"neutral.5"}>{it.key}</Text>
                   </Grid.Col>
                   <Grid.Col span={9}>
-                    <Text>: {it.value}</Text>
+                    <Text c={"neutral.5"}>: {it.value}</Text>
                   </Grid.Col>
                 </Grid>
               ))}
-              <Text fw={600} fz={25} c={"neutral.8"}>
+              <Text fw={600} fz={25} c={"neutral.3"}>
                 Synopsis
               </Text>
               <Text
-                c={"neutral.8"}
+                c={"neutral.5"}
+                lineClamp={4}
                 dangerouslySetInnerHTML={{ __html: detail.synopsis }}
               />
 

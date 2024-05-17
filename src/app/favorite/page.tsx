@@ -14,7 +14,7 @@ const FavoriteBooks = () => {
 
   return (
     <Container size={"lg"}>
-      <Text fw={600} fz={32} mb={24} c={"neutral.8"}>
+      <Text fw={600} fz={32} mb={24} c={"neutral.3"}>
         Favorite Books
       </Text>
 
