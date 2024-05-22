@@ -233,7 +233,7 @@ const Borrowed = () => {
             Scan the QR below to make your transaction
           </Text>
 
-          <Image src={"/QR.jpeg"} width={250} height={300} alt="QR" />
+          <Image src={"/assets/imgs/QR.jpeg"} width={250} height={300} alt="QR" />
 
           <Stack gap={0}>
             <Text fw={600} c={"red"}>

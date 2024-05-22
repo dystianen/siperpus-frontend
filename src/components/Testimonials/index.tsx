@@ -11,7 +11,7 @@ const Testimonials = () => {
   return (
     <Box pos={"relative"}>
       <ParticleAbsolute
-        src="/particle4.png"
+        src="/assets/imgs/particle4.png"
         w={200}
         h={200}
         position={{ top: -100, left: -50 }}
@@ -39,7 +39,7 @@ const Testimonials = () => {
               <Carousel.Slide key={index}>
                 <Flex direction={{ base: "column", lg: "row" }}>
                   <Image
-                    src={"/fikri.png"}
+                    src={"/assets/imgs/fikri.png"}
                     width={412}
                     height={309}
                     alt="testimoni"
@@ -51,7 +51,7 @@ const Testimonials = () => {
                     </Text>
                     <Group align="center" gap={4}>
                       <Image
-                        src={"/star.svg"}
+                        src={"/assets/imgs/star.svg"}
                         width={30}
                         height={30}
                         alt="star"

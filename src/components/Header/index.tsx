@@ -56,7 +56,7 @@ const Header = () => {
       <Container size={"lg"}>
         <Group justify="space-between">
           <Image
-            src={"/logo.png"}
+            src={"/assets/imgs/logo.png"}
             w={{ base: 70, md: 100 }}
             h={{ base: 70, md: 90 }}
             alt="logo"

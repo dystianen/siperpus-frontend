@@ -33,7 +33,7 @@ const CardBook = ({ item }: { item: bookTypes }) => {
             {item.title}
           </Text>
           <Group justify="center" align="center" gap={3}>
-            <Image src={"/star.svg"} width={24} height={24} alt="star" />
+            <Image src={"/assets/imgs/star.svg"} width={24} height={24} alt="star" />
             <Text>{item.rating}/5</Text>
           </Group>
         </Stack>

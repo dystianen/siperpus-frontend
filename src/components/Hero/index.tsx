@@ -21,7 +21,7 @@ const Hero = () => {
   return (
     <Box>
       <ParticleAbsolute
-        src="/particle1.png"
+        src="/assets/imgs/particle1.png"
         w={200}
         h={150}
         position={{ top: 100, left: 0 }}
@@ -58,7 +58,7 @@ const Hero = () => {
             <Group justify="space-between">
               <Group gap={"xs"}>
                 <Image
-                  src={"/star.svg"}
+                  src={"/assets/imgs/star.svg"}
                   w={{ base: 20, md: 30 }}
                   h={{ base: 20, md: 30 }}
                   alt="star"
@@ -85,7 +85,7 @@ const Hero = () => {
         </Stack>
 
         <Image
-          src={"/psm.png"}
+          src={"/assets/imgs/psm.png"}
           w={{ base: 370, xl: 550 }}
           h={{ base: 400, xl: 650 }}
           alt="psm"

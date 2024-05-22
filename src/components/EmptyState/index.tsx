@@ -5,7 +5,7 @@ const EmptyState = () => {
   return (
     <Stack align="center">
       <Image
-        src={"/ic-empty-state.svg"}
+        src={"/assets/imgs/ic-empty-state.svg"}
         width={200}
         height={200}
         alt="empty-state"

@@ -54,13 +54,13 @@ const Motivations = () => {
       {!isMobile && (
         <>
           <ParticleAbsolute
-            src="/particle2.png"
+            src="/assets/imgs/particle2.png"
             w={200}
             h={200}
             position={{ top: 10, left: -100 }}
           />
           <ParticleAbsolute
-            src="/particle3.png"
+            src="/assets/imgs/particle3.png"
             w={200}
             h={170}
             position={{ top: 10, right: 0 }}

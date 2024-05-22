@@ -33,7 +33,7 @@ export default function RootLayout({
             <Header />
             <Box mt={100}>
               <Image
-                src={"/bg-particle.svg"}
+                src={"/assets/imgs/bg-particle.svg"}
                 alt="bg-particle"
                 pos={"fixed"}
                 h={"100vh"}
