@@ -9,7 +9,6 @@ import {
   Text,
   UnstyledButton,
   rem,
-  useMantineTheme,
 } from "@mantine/core";
 import { usePathname, useRouter } from "next/navigation";
 import PopupLogin from "../PopupLogin";
@@ -25,7 +24,6 @@ const Header = () => {
   const router = useRouter();
   const dataToken = useParserToken();
   const pathname = usePathname();
-  const theme = useMantineTheme();
   const [scroll] = useWindowScroll();
   const [token, , removeToken] = useLocalStorage({ key: "token" });
   const [openedLogin, setOpenPopupLogin] = useAtom(openedPopupLogin);
