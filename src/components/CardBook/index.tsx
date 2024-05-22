@@ -1,5 +1,5 @@
 "use client";
-import { embedImage } from "@/helper/embedImage";
+import embedImage from "@/helper/embedImage";
 import { bookTypes } from "@/types/books";
 import { Group, Stack, Text, UnstyledButton } from "@mantine/core";
 import Image from "next/image";

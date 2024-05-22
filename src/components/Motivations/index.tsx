@@ -3,6 +3,7 @@ import { Box, Text } from "@mantine/core";
 import ParticleAbsolute from "../ParticleAbsolute";
 import { useMediaQueryFromBreakpoints } from "@/hooks/useMediaQueryFromBreakpoints";
 import { motion } from "framer-motion";
+import colors from "@/config/colors";
 
 const Motivations = () => {
   const isMobile = useMediaQueryFromBreakpoints();
@@ -14,7 +15,7 @@ const Motivations = () => {
           zIndex: 2,
         }}
       >
-        <Text fw={600} fz={32} c={"neutral.3"} ta={"center"}>
+        <Text fw={600} fz={32} c={colors.neutral[0]} ta={"center"}>
           Motivations
         </Text>
 
@@ -37,7 +38,7 @@ const Motivations = () => {
           <Text
             fz={{ base: 40, md: 80 }}
             ta={"center"}
-            c={"success.9"}
+            c={colors.primary[0]}
             lh={{ base: "50px", md: "120px" }}
             style={{
               zIndex: 2,

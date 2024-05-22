@@ -1,5 +1,5 @@
 "use client";
-import { Box, Flex, Skeleton, Stack } from "@mantine/core";
+import { Box, Flex, Skeleton } from "@mantine/core";
 import React, { ReactNode } from "react";
 
 type conditionalRenderingTypes = {
@@ -15,7 +15,7 @@ const RenderingSidebar = ({
       {isFetching ? (
         <Flex direction={{ base: "row", lg: "column" }} gap={"xs"}>
           {Array.from({ length: 6 }).map((_, index) => (
-            <Skeleton key={index} w={150} h={30} radius={"md"} />
+            <Skeleton key={index} w={120} h={40} radius={"md"} />
           ))}
         </Flex>
       ) : (

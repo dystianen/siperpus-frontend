@@ -3,6 +3,7 @@ import ParticleAbsolute from "../ParticleAbsolute";
 import { Carousel } from "@mantine/carousel";
 import Image from "next/image";
 import { useGetReviewsQuery } from "@/redux/slice/books.api";
+import colors from "@/config/colors";
 
 const Testimonials = () => {
   const { data: reviews } = useGetReviewsQuery();
@@ -16,7 +17,7 @@ const Testimonials = () => {
         position={{ top: -100, left: -50 }}
       />
 
-      <Text fw={600} fz={32} c={"neutral.3"} ta={"center"}>
+      <Text fw={600} fz={32} c={colors.neutral[0]} ta={"center"}>
         Testimonials
       </Text>
 
@@ -28,8 +29,8 @@ const Testimonials = () => {
         mt={32}
         styles={{
           indicators: {
-            bottom: -32
-          }
+            bottom: -32,
+          },
         }}
       >
         {reviews?.map(
@@ -45,7 +46,7 @@ const Testimonials = () => {
                   />
 
                   <Stack gap={0} ml={32}>
-                    <Text c={"neutral.5"} fz={24}>
+                    <Text c={colors.neutral[1]} fz={24}>
                       &quot;{it.review}&quot; 
                     </Text>
                     <Group align="center" gap={4}>
@@ -55,7 +56,7 @@ const Testimonials = () => {
                         height={30}
                         alt="star"
                       />
-                      <Text fw={600} fz={24} c={"neutral.5"}>
+                      <Text fw={600} fz={24} c={colors.neutral[1]}>
                         {it.rating}/5
                       </Text>
                     </Group>

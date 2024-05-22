@@ -15,6 +15,7 @@ import { useForm, yupResolver } from "@mantine/form";
 import { toast } from "react-toastify";
 import { useLocalStorage } from "@mantine/hooks";
 import { useRouter } from "next/navigation";
+import colors from "@/config/colors";
 
 type PopupLoginTypes = {
   opened: boolean;
@@ -72,10 +73,10 @@ const PopupLogin = ({ opened, close }: PopupLoginTypes) => {
       centered
       styles={{
         header: {
-          backgroundColor: "#0b131d",
+          backgroundColor: colors.neutral[3],
         },
         content: {
-          backgroundColor: "#0b131d",
+          backgroundColor: colors.neutral[3],
         },
       }}
     >
@@ -95,7 +96,7 @@ const PopupLogin = ({ opened, close }: PopupLoginTypes) => {
           {...getInputProps("password")}
         />
 
-        <Button bg={"success.9"} fullWidth onClick={() => handleSubmit()}>
+        <Button bg={colors.primary[0]} fullWidth onClick={() => handleSubmit()}>
           Login
         </Button>
         <Text ta={"center"} fz={14}>

@@ -2,6 +2,7 @@
 import CardBook from "@/components/CardBook";
 import EmptyState from "@/components/EmptyState";
 import RenderBooks from "@/components/Rendering/RenderBooks";
+import colors from "@/config/colors";
 import { useGetCollectionFavoriteBooksQuery } from "@/redux/slice/books.api";
 import { Container, Grid, Text } from "@mantine/core";
 
@@ -14,7 +15,7 @@ const FavoriteBooks = () => {
 
   return (
     <Container size={"lg"}>
-      <Text fw={600} fz={32} mb={24} c={"neutral.3"}>
+      <Text fw={600} fz={32} mb={24} c={colors.neutral[0]}>
         Favorite Books
       </Text>
 

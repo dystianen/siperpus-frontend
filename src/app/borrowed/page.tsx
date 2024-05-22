@@ -1,5 +1,5 @@
 "use client";
-import { embedImage } from "@/helper/embedImage";
+import embedImage from "@/helper/embedImage";
 import {
   useGetBorrowedBooksQuery,
   useLazyGetTotalFineQuery,
@@ -30,6 +30,7 @@ import { MdFileCopy } from "react-icons/md";
 import { borrowedTypes } from "@/types/books";
 import { useForm, yupResolver } from "@mantine/form";
 import * as y from "yup";
+import colors from "@/config/colors";
 
 const schemaValidation = y.object().shape({
   rating: y.number().required("Rating is required!"),
@@ -129,7 +130,7 @@ const Borrowed = () => {
 
   return (
     <Container size={"lg"}>
-      <Text fw={600} fz={32} mb={24} c={"neutral.3"}>
+      <Text fw={600} fz={32} mb={24} c={colors.neutral[0]}>
         Borrowed Books
       </Text>
 
@@ -149,10 +150,15 @@ const Borrowed = () => {
                   <Text>
                     Due date : {dayjs(it.due_date).format("DD, MMM YYYY")}
                   </Text>
-                  <Text>status : <Badge color={getColorBadge(it.status)}>{it.status.replace("_", " ")}</Badge></Text>
+                  <Text>
+                    status :{" "}
+                    <Badge color={getColorBadge(it.status)}>
+                      {it.status.replace("_", " ")}
+                    </Badge>
+                  </Text>
                   {it.status === "borrowed" && (
                     <Button
-                      color={"success.9"}
+                      color={colors.primary[0]}
                       size="xs"
                       w={"max-content"}
                       variant="outline"
@@ -206,7 +212,7 @@ const Borrowed = () => {
             </Button>
             <Button
               px={32}
-              color="success.9"
+              color={colors.primary[0]}
               onClick={() => renderPay.onClick()}
             >
               {renderPay.buttonLabel}
@@ -262,7 +268,7 @@ const Borrowed = () => {
             </Button>
             <Button
               px={32}
-              color="success.9"
+              color={colors.primary[0]}
               loading={resReturnBook.isLoading}
               onClick={() => handleSubmit()}
               disabled={!file}

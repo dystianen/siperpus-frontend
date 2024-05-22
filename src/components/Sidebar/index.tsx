@@ -1,19 +1,12 @@
-import {
-  Flex,
-  Group,
-  ScrollArea,
-  Stack,
-  UnstyledButton,
-  useMantineTheme,
-} from "@mantine/core";
+import { Flex, Group, ScrollArea, UnstyledButton } from "@mantine/core";
 import { motion } from "framer-motion";
 import { useGetCategoriesQuery } from "@/redux/slice/books.api";
 import { useAtom } from "jotai";
 import { activeSidebar } from "@/store/GlobalState";
 import RenderingSidebar from "./RenderingSidebar";
+import colors from "@/config/colors";
 
 export const Sidebar = () => {
-  const theme = useMantineTheme();
   const [active, setActive] = useAtom(activeSidebar);
   const { data: menu, isFetching } = useGetCategoriesQuery();
 
@@ -31,7 +24,7 @@ export const Sidebar = () => {
                 >
                   <motion.div
                     whileHover={{
-                      backgroundColor: "rgba(255,255,255,.1)",
+                      backgroundColor: colors.neutral[4],
                       color: "white",
                     }}
                     style={{
@@ -40,7 +33,7 @@ export const Sidebar = () => {
                       paddingLeft: 16,
                       paddingRight: 16,
                       borderRadius: 5,
-                      backgroundColor: isActive ? "rgba(255, 255, 255, 0.1)" : "",
+                      backgroundColor: isActive ? colors.neutral[4] : "",
                       color: isActive ? "white" : "",
                     }}
                   >

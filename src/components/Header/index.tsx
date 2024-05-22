@@ -12,7 +12,6 @@ import {
   useMantineTheme,
 } from "@mantine/core";
 import { usePathname, useRouter } from "next/navigation";
-import React from "react";
 import PopupLogin from "../PopupLogin";
 import PopupRegister from "../PopupRegister";
 import { useAtom } from "jotai";
@@ -20,7 +19,7 @@ import { openedPopupLogin, openedPopupRegister } from "@/store/GlobalState";
 import { useLocalStorage, useWindowScroll } from "@mantine/hooks";
 import { useParserToken } from "@/hooks/useParserToken";
 import { FaChevronDown } from "react-icons/fa6";
-import { motion } from "framer-motion";
+import colors from "@/config/colors";
 
 const Header = () => {
   const router = useRouter();
@@ -28,7 +27,7 @@ const Header = () => {
   const pathname = usePathname();
   const theme = useMantineTheme();
   const [scroll] = useWindowScroll();
-  const [token, _, removeToken] = useLocalStorage({ key: "token" });
+  const [token, , removeToken] = useLocalStorage({ key: "token" });
   const [openedLogin, setOpenPopupLogin] = useAtom(openedPopupLogin);
   const [openedRegister, setOpenPopupRegister] = useAtom(openedPopupRegister);
 
@@ -49,10 +48,11 @@ const Header = () => {
       w={"100%"}
       h={90}
       top={0}
-      bg={"#0b131d"}
+      bg={colors.neutral[3]}
       style={{
         zIndex: 99,
-        boxShadow: scroll.y > 50 ? `0 ${rem(3)} ${rem(10)} 0 rgba(255, 255, 255, .1)` : "",
+        boxShadow:
+          scroll.y > 50 ? `0 ${rem(3)} ${rem(10)} 0 ${colors.neutral[4]}` : "",
       }}
     >
       <Container size={"lg"}>
@@ -70,7 +70,10 @@ const Header = () => {
                 onClick={() => router.push(it.href)}
                 fw={500}
                 style={{
-                  borderBottom: pathname === it.href ? `2px solid ${theme.colors.success[3]}` : "",
+                  borderBottom:
+                    pathname === it.href
+                      ? `2px solid ${colors.primary[1]}`
+                      : "",
                 }}
               >
                 {it.text}
@@ -93,24 +96,19 @@ const Header = () => {
 
               <Menu.Dropdown>
                 <Menu.Item onClick={() => router.push("/favorite")}>
-                  <Text c={"neutral.8"}>Favorite</Text>
+                  <Text>Favorite</Text>
                 </Menu.Item>
                 <Menu.Item onClick={() => router.push("/borrowed")}>
-                  <Text c={"neutral.8"}>Borrowed</Text>
+                  <Text>Borrowed</Text>
                 </Menu.Item>
-                <Menu.Item
-                  onClick={() => {
-                    router.refresh();
-                    removeToken();
-                  }}
-                >
-                  <Text c={"neutral.8"}>Logout</Text>
+                <Menu.Item onClick={() => removeToken()}>
+                  <Text>Logout</Text>
                 </Menu.Item>
               </Menu.Dropdown>
             </Menu>
           ) : (
             <Button
-              bg={"success.9"}
+              bg={colors.primary[0]}
               radius={"xl"}
               onClick={() => setOpenPopupLogin(true)}
               fz={{ base: "xs", md: "md" }}

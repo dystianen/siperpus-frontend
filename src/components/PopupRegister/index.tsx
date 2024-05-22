@@ -10,11 +10,11 @@ import {
 } from "@mantine/core";
 import { useForm, yupResolver } from "@mantine/form";
 import { useSetAtom } from "jotai";
-import React from "react";
 import { LuLock, LuMail, LuUser2 } from "react-icons/lu";
 import { SiGooglemaps } from "react-icons/si";
 import { toast } from "react-toastify";
 import * as y from "yup";
+import colors from "@/config/colors";
 
 type PopupLoginTypes = {
   opened: boolean;
@@ -70,10 +70,10 @@ const PopupRegister = ({ opened, close }: PopupLoginTypes) => {
       centered
       styles={{
         header: {
-          backgroundColor: "#0b131d",
+          backgroundColor: colors.neutral[3],
         },
         content: {
-          backgroundColor: "#0b131d",
+          backgroundColor: colors.neutral[3],
         },
       }}
     >
@@ -105,7 +105,7 @@ const PopupRegister = ({ opened, close }: PopupLoginTypes) => {
           {...getInputProps("address")}
         />
 
-        <Button bg={"success.9"} fullWidth onClick={() => handleSubmit()}>
+        <Button bg={colors.primary[0]} fullWidth onClick={() => handleSubmit()}>
           Register
         </Button>
         <Text ta={"center"} fz={14}>

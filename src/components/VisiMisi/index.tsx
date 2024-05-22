@@ -1,12 +1,12 @@
 import { Box, Card, SimpleGrid, Stack, Text } from "@mantine/core";
-import React from "react";
 import { GiGate } from "react-icons/gi";
 import { FaBookReader, FaUsers } from "react-icons/fa";
 import { motion } from "framer-motion";
+import colors from "@/config/colors";
 
 const styleIcon = {
   fontSize: "5rem",
-  color: "#0b131d",
+  color: colors.neutral[4],
 };
 
 const VisiMisi = () => {
@@ -27,7 +27,7 @@ const VisiMisi = () => {
 
   return (
     <Box>
-      <Text fw={600} fz={32} c={"neutral.3"} ta={"center"}>
+      <Text fw={600} fz={32} c={colors.neutral[0]} ta={"center"}>
         Visi & Misi
       </Text>
       <SimpleGrid cols={3} mt={32}>
@@ -49,12 +49,7 @@ const VisiMisi = () => {
               once: true,
             }}
           >
-            <Card
-              bg={"rgba(255,255,255,.5)"}
-              radius={"xl"}
-              shadow="xl"
-              h={"100%"}
-            >
+            <Card bg={colors.neutral[2]} radius={"xl"} shadow="xl" h={"100%"}>
               <Stack align="center">
                 {it.icon}
                 <Text ta={"center"}>{it.text}</Text>

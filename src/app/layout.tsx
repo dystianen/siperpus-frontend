@@ -29,17 +29,19 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ReduxProvider>
-          <MantineProvider theme={Theme} defaultColorScheme={"light"}>
+          <MantineProvider theme={Theme} defaultColorScheme={"dark"}>
             <Header />
             <Box mt={100}>
               <Image
-                src={"bg-particle.svg"}
+                src={"/bg-particle.svg"}
                 alt="bg-particle"
                 pos={"fixed"}
                 h={"100vh"}
                 style={{ zIndex: 0 }}
               />
-              <Box style={{ zIndex: 1 }}>{children}</Box>
+              <Box pos={"relative"} style={{ zIndex: 1 }}>
+                {children}
+              </Box>
             </Box>
 
             <ToastContainer

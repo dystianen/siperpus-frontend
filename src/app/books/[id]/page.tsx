@@ -1,5 +1,5 @@
 "use client";
-import { embedImage } from "@/helper/embedImage";
+import embedImage from "@/helper/embedImage";
 import {
   useGetDetailBookQuery,
   usePostAddFavoriteMutation,
@@ -24,6 +24,7 @@ import { toast } from "react-toastify";
 import Image from "next/image";
 import RenderDetailBook from "@/components/Rendering/RenderDetailBook";
 import { useDisclosure } from "@mantine/hooks";
+import colors from "@/config/colors";
 
 const DetailBook = () => {
   const isLoggedIn = useCheckLoggedIn();
@@ -82,7 +83,7 @@ const DetailBook = () => {
 
   return (
     <Container size={"lg"} mb={50}>
-      <Text fw={600} fz={32} c={"neutral.3"}>
+      <Text fw={600} fz={32} c={colors.neutral[0]}>
         Detail Book
       </Text>
       <RenderDetailBook isFetching={isFetching}>
@@ -99,24 +100,24 @@ const DetailBook = () => {
             />
 
             <Stack>
-              <Text fw={600} fz={32} c={"success.9"}>
+              <Text fw={600} fz={32} c={colors.primary[0]}>
                 {detail.title}
               </Text>
               {bookData.map((it, index) => (
                 <Grid key={index}>
                   <Grid.Col span={3}>
-                    <Text c={"neutral.5"}>{it.key}</Text>
+                    <Text c={colors.neutral[1]}>{it.key}</Text>
                   </Grid.Col>
                   <Grid.Col span={9}>
-                    <Text c={"neutral.5"}>: {it.value}</Text>
+                    <Text c={colors.neutral[1]}>: {it.value}</Text>
                   </Grid.Col>
                 </Grid>
               ))}
-              <Text fw={600} fz={25} c={"neutral.3"}>
+              <Text fw={600} fz={25} c={colors.neutral[0]}>
                 Synopsis
               </Text>
               <Text
-                c={"neutral.5"}
+                c={colors.neutral[1]}
                 lineClamp={4}
                 dangerouslySetInnerHTML={{ __html: detail.synopsis }}
               />
@@ -125,7 +126,7 @@ const DetailBook = () => {
                 <Button
                   variant="outline"
                   leftSection={<BsBookmarkPlusFill />}
-                  color={"success.9"}
+                  color={colors.primary[0]}
                   bg={"white"}
                   disabled={detail.is_save}
                   loading={resSaveFavorite.isLoading}
@@ -135,7 +136,7 @@ const DetailBook = () => {
                 </Button>
                 <Button
                   leftSection={<FaPlus />}
-                  bg={"success.9"}
+                  bg={colors.primary[0]}
                   onClick={open}
                 >
                   Borrow
@@ -157,7 +158,7 @@ const DetailBook = () => {
           </Button>
           <Button
             px={32}
-            color="success.9"
+            color={colors.primary[0]}
             loading={resSubmitBorrow.isLoading}
             onClick={handleBorrowed}
           >

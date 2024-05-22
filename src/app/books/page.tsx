@@ -17,6 +17,7 @@ import {
 import { useAtomValue } from "jotai";
 import { LuSearch } from "react-icons/lu";
 import { useDebouncedState } from "@mantine/hooks";
+import colors from "@/config/colors";
 
 export default function Categories() {
   const category = useAtomValue(activeSidebar);
@@ -31,7 +32,7 @@ export default function Categories() {
     <Box h={{ base: "90vh", md: "80vh" }} mt={100}>
       <Container size={"lg"}>
         <Group justify="space-between" align="center" mb={16}>
-          <Text fz={32} fw={600} c={"neutral.3"}>
+          <Text fz={32} fw={600} c={colors.neutral[0]}>
             Books
           </Text>
           <TextInput
