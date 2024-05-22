@@ -40,6 +40,11 @@ export default function Categories() {
             radius={"md"}
             leftSection={<LuSearch />}
             onChange={(e: any) => setSearch(e.target.value)}
+            styles={{
+              input: {
+                backgroundColor: colors.neutral[3],
+              }
+            }}
           />
         </Group>
         <Grid>

@@ -80,7 +80,15 @@ const Header = () => {
           </Group>
 
           {token ? (
-            <Menu shadow="md" width={200}>
+            <Menu
+              shadow="md"
+              width={200}
+              styles={{
+                dropdown: {
+                  backgroundColor: colors.neutral[3],
+                },
+              }}
+            >
               <Menu.Target>
                 <UnstyledButton>
                   <Group align="center">
