@@ -11,21 +11,23 @@ import {
   rem,
 } from "@mantine/core";
 import { usePathname, useRouter } from "next/navigation";
-import PopupLogin from "../PopupLogin";
-import PopupRegister from "../PopupRegister";
 import { useAtom } from "jotai";
 import { openedPopupLogin, openedPopupRegister } from "@/store/GlobalState";
-import { useLocalStorage, useWindowScroll } from "@mantine/hooks";
+import { useWindowScroll } from "@mantine/hooks";
 import { useParserToken } from "@/hooks/useParserToken";
 import { FaChevronDown } from "react-icons/fa6";
+import { deleteCookie } from "cookies-next";
+import { useCheckLoggedIn } from "@/hooks/useCheckLoggedIn";
+import PopupLogin from "../PopupLogin";
+import PopupRegister from "../PopupRegister";
 import colors from "@/config/colors";
 
 const Header = () => {
+  const isLoggedIn = useCheckLoggedIn();
   const router = useRouter();
-  const dataToken = useParserToken();
   const pathname = usePathname();
+  const dataToken = useParserToken();
   const [scroll] = useWindowScroll();
-  const [token, , removeToken] = useLocalStorage({ key: "token" });
   const [openedLogin, setOpenPopupLogin] = useAtom(openedPopupLogin);
   const [openedRegister, setOpenPopupRegister] = useAtom(openedPopupRegister);
 
@@ -79,7 +81,7 @@ const Header = () => {
             ))}
           </Group>
 
-          {token ? (
+          {isLoggedIn ? (
             <Menu
               shadow="md"
               width={200}
@@ -107,7 +109,7 @@ const Header = () => {
                 <Menu.Item onClick={() => router.push("/borrowed")}>
                   <Text>Borrowed</Text>
                 </Menu.Item>
-                <Menu.Item onClick={() => removeToken()}>
+                <Menu.Item onClick={() => deleteCookie("authToken")}>
                   <Text>Logout</Text>
                 </Menu.Item>
               </Menu.Dropdown>

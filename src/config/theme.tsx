@@ -1,10 +1,6 @@
 import { MantineThemeOverride, em } from "@mantine/core";
 
 export const Theme: MantineThemeOverride = {
-  // Typography base
-  fontFamily:
-    "Poppins, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji",
-
   // Add your own custom properties on Mantine theme
   other: {
     borderRadius: {

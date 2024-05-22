@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+// styles
 import "./globals.css";
 import "@mantine/core/styles.css";
 import "@mantine/carousel/styles.css";
+import "react-toastify/dist/ReactToastify.css";
+
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import { Box, ColorSchemeScript, Image, MantineProvider } from "@mantine/core";
 import Header from "@/components/Header";
 import { ReduxProvider } from "@/redux/Provider/ReduxProvider";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Theme from "@/config/theme";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -29,7 +31,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ReduxProvider>
-          <MantineProvider theme={Theme} defaultColorScheme={"dark"}>
+          <MantineProvider theme={Theme} defaultColorScheme={"light"}>
             <Header />
             <Box mt={100}>
               <Image

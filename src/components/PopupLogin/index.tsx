@@ -13,8 +13,7 @@ import { LuLock, LuUser2 } from "react-icons/lu";
 import * as y from "yup";
 import { useForm, yupResolver } from "@mantine/form";
 import { toast } from "react-toastify";
-import { useLocalStorage } from "@mantine/hooks";
-import { useRouter } from "next/navigation";
+import { setCookie } from "cookies-next";
 import colors from "@/config/colors";
 
 type PopupLoginTypes = {
@@ -28,12 +27,6 @@ const schemaValidation = y.object().shape({
 });
 
 const PopupLogin = ({ opened, close }: PopupLoginTypes) => {
-  const router = useRouter();
-  const [_, setToken] = useLocalStorage({
-    key: "token",
-    getInitialValueInEffect: false,
-  });
-
   const { getInputProps, onSubmit } = useForm({
     validate: yupResolver(schemaValidation),
     initialValues: {
@@ -56,8 +49,7 @@ const PopupLogin = ({ opened, close }: PopupLoginTypes) => {
       .then((res) => {
         toast("Login successfully!");
         setOpenPopupLogin(false);
-        router.refresh();
-        setToken(res.token);
+        setCookie("authToken", res.token, { secure: true });
       });
   });
 
