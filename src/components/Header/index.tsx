@@ -12,7 +12,7 @@ import {
 import { usePathname, useRouter } from "next/navigation";
 import { useAtom } from "jotai";
 import { openedPopupLogin, openedPopupRegister } from "@/store/GlobalState";
-import { useWindowScroll } from "@mantine/hooks";
+import { useLocalStorage, useWindowScroll } from "@mantine/hooks";
 import { useParserToken } from "@/hooks/useParserToken";
 import { FaChevronDown } from "react-icons/fa6";
 import { deleteCookie } from "cookies-next";
@@ -29,6 +29,7 @@ const Header = () => {
   const pathname = usePathname();
   const dataToken = useParserToken();
   const [scroll] = useWindowScroll();
+  const [, , removeToken] = useLocalStorage({ key: "authToken" });
   const [openedLogin, setOpenPopupLogin] = useAtom(openedPopupLogin);
   const [openedRegister, setOpenPopupRegister] = useAtom(openedPopupRegister);
   const [isAuthenticated, setAuthenticate] = useState<boolean>(false);
@@ -110,7 +111,7 @@ const Header = () => {
                 <Menu.Item onClick={() => router.push("/borrowed")}>
                   <Text>Borrowed</Text>
                 </Menu.Item>
-                <Menu.Item onClick={() => deleteCookie("authToken")}>
+                <Menu.Item onClick={removeToken}>
                   <Text>Logout</Text>
                 </Menu.Item>
               </Menu.Dropdown>

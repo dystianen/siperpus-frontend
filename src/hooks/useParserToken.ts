@@ -1,3 +1,4 @@
+import { useLocalStorage } from "@mantine/hooks";
 import { getCookie } from "cookies-next";
 import { jwtDecode } from "jwt-decode";
 
@@ -14,7 +15,7 @@ type JwtPayload = {
 };
 
 export const useParserToken = () => {
-  const authToken = getCookie("authToken");
+  const [authToken] = useLocalStorage({ key: "authToken" });
   if (authToken) {
     const data: JwtPayload = jwtDecode(authToken);
     return data;

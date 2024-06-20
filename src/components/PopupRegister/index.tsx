@@ -63,7 +63,7 @@ const PopupRegister = ({ opened, close }: PopupLoginTypes) => {
       opened={opened}
       onClose={close}
       title={
-        <Text fw={"bold"} fz={24}>
+        <Text fw={"bold"} fz={30}>
           Sign Up, Here!
         </Text>
       }
@@ -77,47 +77,61 @@ const PopupRegister = ({ opened, close }: PopupLoginTypes) => {
         },
       }}
     >
-      <Stack>
-        <TextInput
-          label="Username"
-          placeholder="username"
-          leftSection={<LuUser2 />}
-          {...getInputProps("user_name")}
-        />
-        <TextInput
-          label="Email"
-          placeholder="email"
-          type="email"
-          leftSection={<LuMail />}
-          {...getInputProps("email")}
-        />
-        <TextInput
-          label="Password"
-          type="password"
-          placeholder="password"
-          leftSection={<LuLock />}
-          {...getInputProps("password")}
-        />
-        <TextInput
-          label="Address"
-          placeholder="address"
-          leftSection={<SiGooglemaps />}
-          {...getInputProps("address")}
-        />
+      <form onSubmit={handleSubmit}>
+        <Stack>
+          <TextInput
+            label="Username"
+            placeholder="username"
+            leftSection={<LuUser2 />}
+            size="lg"
+            {...getInputProps("user_name")}
+          />
+          <TextInput
+            label="Email"
+            placeholder="email"
+            type="email"
+            leftSection={<LuMail />}
+            size="lg"
+            {...getInputProps("email")}
+          />
+          <TextInput
+            label="Password"
+            type="password"
+            placeholder="password"
+            leftSection={<LuLock />}
+            size="lg"
+            {...getInputProps("password")}
+          />
+          <TextInput
+            label="Address"
+            placeholder="address"
+            leftSection={<SiGooglemaps />}
+            size="lg"
+            {...getInputProps("address")}
+          />
 
-        <Button bg={colors.primary[0]} fullWidth onClick={() => handleSubmit()}>
-          Register
-        </Button>
-        <Text ta={"center"} fz={14}>
-          Have an account?{" "}
-          <UnstyledButton
-            onClick={handleClickLoginNow}
-            style={{ textDecoration: "underline" }}
+          <Button
+            mt={"xl"}
+            fullWidth
+            variant="outline"
+            color="white"
+            radius="xl"
+            type="submit"
+            size="lg"
           >
-            Login now!
-          </UnstyledButton>
-        </Text>
-      </Stack>
+            Register
+          </Button>
+          <Text ta={"center"} fz={14}>
+            Have an account?{" "}
+            <UnstyledButton
+              onClick={handleClickLoginNow}
+              style={{ textDecoration: "underline" }}
+            >
+              Login now!
+            </UnstyledButton>
+          </Text>
+        </Stack>
+      </form>
     </Modal>
   );
 };
