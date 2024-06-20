@@ -58,49 +58,53 @@ const PopupLogin = ({ opened, close }: PopupLoginTypes) => {
       opened={opened}
       onClose={close}
       title={
-        <Text fw={"bold"} fz={24}>
+        <Text fw={"bold"} fz={30}>
           Sign In, Here!
         </Text>
       }
       centered
-      styles={{
-        header: {
-          backgroundColor: colors.neutral[3],
-        },
-        content: {
-          backgroundColor: colors.neutral[3],
-        },
-      }}
     >
-      <Stack>
-        <TextInput
-          type="email"
-          label="Email"
-          placeholder="email"
-          leftSection={<LuUser2 />}
-          {...getInputProps("email")}
-        />
-        <TextInput
-          label="Password"
-          type="password"
-          placeholder="password"
-          leftSection={<LuLock />}
-          {...getInputProps("password")}
-        />
+      <form onSubmit={handleSubmit}>
+        <Stack>
+          <TextInput
+            type="email"
+            label="Email"
+            placeholder="email"
+            size="lg"
+            leftSection={<LuUser2 />}
+            {...getInputProps("email")}
+          />
+          <TextInput
+            label="Password"
+            type="password"
+            placeholder="password"
+            size="lg"
+            leftSection={<LuLock />}
+            {...getInputProps("password")}
+          />
 
-        <Button bg={colors.primary[0]} fullWidth onClick={() => handleSubmit()}>
-          Login
-        </Button>
-        <Text ta={"center"} fz={14}>
-          Don&#39;t have an account yet?{" "}
-          <UnstyledButton
-            onClick={handleClickRegisterNow}
-            style={{ textDecoration: "underline" }}
+          <Button
+            mt="xl"
+            fullWidth
+            variant="outline"
+            color="white"
+            size="lg"
+            radius="xl"
+            type="submit"
           >
-            Register now!
-          </UnstyledButton>
-        </Text>
-      </Stack>
+            Login
+          </Button>
+          <Text ta={"center"} fz={14}>
+            Don&#39;t have an account yet?{" "}
+            <UnstyledButton
+              onClick={handleClickRegisterNow}
+              style={{ textDecoration: "underline" }}
+            >
+              Register now!
+            </UnstyledButton>
+          </Text>
+        </Stack>
+      </form>
     </Modal>
   );
 };

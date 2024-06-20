@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -6,6 +8,12 @@
 
 html,
 body {
-  background: #0b131d !important;
+  /* background: #0b131d !important; */
+  background: #000000 !important;
   color: #ffffff !important;
+}
+
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-style: normal;
 }

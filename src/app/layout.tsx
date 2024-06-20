@@ -31,7 +31,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <ReduxProvider>
-          <MantineProvider theme={Theme} defaultColorScheme={"light"}>
+          <MantineProvider theme={Theme} defaultColorScheme={"dark"}>
             <Header />
             <Box mt={100}>
               <Image

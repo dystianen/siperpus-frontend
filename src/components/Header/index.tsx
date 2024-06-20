@@ -4,7 +4,6 @@ import {
   Button,
   Container,
   Group,
-  Image,
   Menu,
   Text,
   UnstyledButton,
@@ -21,6 +20,7 @@ import { useCheckLoggedIn } from "@/hooks/useCheckLoggedIn";
 import PopupLogin from "../PopupLogin";
 import PopupRegister from "../PopupRegister";
 import colors from "@/config/colors";
+import { GiBurningBook } from "react-icons/gi";
 
 const Header = () => {
   const isLoggedIn = useCheckLoggedIn();
@@ -48,21 +48,16 @@ const Header = () => {
       w={"100%"}
       h={90}
       top={0}
-      bg={colors.neutral[3]}
+      bg={"#000000"}
       style={{
         zIndex: 99,
         boxShadow:
           scroll.y > 50 ? `0 ${rem(3)} ${rem(10)} 0 ${colors.neutral[4]}` : "",
       }}
     >
-      <Container size={"lg"}>
-        <Group justify="space-between">
-          <Image
-            src={"/assets/imgs/logo.png"}
-            w={{ base: 70, md: 100 }}
-            h={{ base: 70, md: 90 }}
-            alt="logo"
-          />
+      <Container size={"lg"} h={"100%"}>
+        <Group justify="space-between" align="center" h={"100%"}>
+          <GiBurningBook style={{ fontSize: 50 }} />
           <Group>
             {menu.map((it, index) => (
               <UnstyledButton
@@ -72,7 +67,7 @@ const Header = () => {
                 style={{
                   borderBottom:
                     pathname === it.href
-                      ? `2px solid ${colors.primary[1]}`
+                      ? `2px solid ${colors.neutral[0]}`
                       : "",
                 }}
               >
@@ -116,7 +111,8 @@ const Header = () => {
             </Menu>
           ) : (
             <Button
-              bg={colors.primary[0]}
+              variant="outline"
+              color="white"
               radius={"xl"}
               onClick={() => setOpenPopupLogin(true)}
               fz={{ base: "xs", md: "md" }}
