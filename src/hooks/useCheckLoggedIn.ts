@@ -1,7 +1,6 @@
-import { hasCookie } from "cookies-next";
-
+import { readLocalStorageValue } from "@mantine/hooks";
 
 export const useCheckLoggedIn = () => {
-  const isAuthToken = hasCookie("authToken");
-  return isAuthToken;
+  const token = readLocalStorageValue({ key: "authToken" });
+  return !!token;
 };

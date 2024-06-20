@@ -13,8 +13,7 @@ import { LuLock, LuUser2 } from "react-icons/lu";
 import * as y from "yup";
 import { useForm, yupResolver } from "@mantine/form";
 import { toast } from "react-toastify";
-import { setCookie } from "cookies-next";
-import colors from "@/config/colors";
+import { useLocalStorage } from "@mantine/hooks";
 
 type PopupLoginTypes = {
   opened: boolean;
@@ -27,6 +26,9 @@ const schemaValidation = y.object().shape({
 });
 
 const PopupLogin = ({ opened, close }: PopupLoginTypes) => {
+  const [_, setToken] = useLocalStorage({
+    key: "authToken",
+  });
   const { getInputProps, onSubmit } = useForm({
     validate: yupResolver(schemaValidation),
     initialValues: {
@@ -49,7 +51,7 @@ const PopupLogin = ({ opened, close }: PopupLoginTypes) => {
       .then((res) => {
         toast("Login successfully!");
         setOpenPopupLogin(false);
-        setCookie("authToken", res.token, { secure: true });
+        setToken(res.token);
       });
   });
 

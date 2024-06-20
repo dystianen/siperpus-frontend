@@ -21,6 +21,7 @@ import PopupLogin from "../PopupLogin";
 import PopupRegister from "../PopupRegister";
 import colors from "@/config/colors";
 import { GiBurningBook } from "react-icons/gi";
+import { useEffect, useState } from "react";
 
 const Header = () => {
   const isLoggedIn = useCheckLoggedIn();
@@ -30,6 +31,11 @@ const Header = () => {
   const [scroll] = useWindowScroll();
   const [openedLogin, setOpenPopupLogin] = useAtom(openedPopupLogin);
   const [openedRegister, setOpenPopupRegister] = useAtom(openedPopupRegister);
+  const [isAuthenticated, setAuthenticate] = useState<boolean>(false);
+
+  useEffect(() => {
+    setAuthenticate(isLoggedIn);
+  }, [isLoggedIn]);
 
   const menu = [
     {
@@ -76,7 +82,7 @@ const Header = () => {
             ))}
           </Group>
 
-          {isLoggedIn ? (
+          {isAuthenticated ? (
             <Menu
               shadow="md"
               width={200}
@@ -110,15 +116,17 @@ const Header = () => {
               </Menu.Dropdown>
             </Menu>
           ) : (
-            <Button
-              variant="outline"
-              color="white"
-              radius={"xl"}
-              onClick={() => setOpenPopupLogin(true)}
-              fz={{ base: "xs", md: "md" }}
-            >
-              Login/Register
-            </Button>
+            <div>
+              <Button
+                variant="outline"
+                color="white"
+                radius={"xl"}
+                onClick={() => setOpenPopupLogin(true)}
+                fz={{ base: "xs", md: "md" }}
+              >
+                Login/Register
+              </Button>
+            </div>
           )}
         </Group>
       </Container>
