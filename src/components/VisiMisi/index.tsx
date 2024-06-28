@@ -1,4 +1,4 @@
-import { Card, Flex, SimpleGrid, Stack, Text } from "@mantine/core";
+import { Card, Container, Flex, SimpleGrid, Stack, Text } from "@mantine/core";
 import { GiGate } from "react-icons/gi";
 import { FaBookReader, FaUsers } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -27,43 +27,45 @@ const VisiMisi = () => {
   ];
 
   return (
-    <Flex
-      justify={"center"}
-      direction={"column"}
-      h={{ base: "100vh", xl: 500 }}
-    >
-      <Text fw={600} fz={32} c={colors.neutral[0]} ta={"center"}>
-        Visi & Misi
-      </Text>
-      <SimpleGrid cols={{ base: 1, lg: 3 }} mt={32}>
-        {data.map((it, index) => (
-          <motion.div
-            key={index}
-            initial={{
-              y: 100,
-              opacity: 0,
-            }}
-            whileInView={{
-              y: 0,
-              opacity: 1,
-            }}
-            transition={{
-              duration: 0.5 * index,
-            }}
-            viewport={{
-              once: true,
-            }}
-          >
-            <Card radius={"xl"} shadow="xl" h={"100%"} withBorder>
-              <Stack align="center">
-                {it.icon}
-                <Text ta={"center"}>{it.text}</Text>
-              </Stack>
-            </Card>
-          </motion.div>
-        ))}
-      </SimpleGrid>
-    </Flex>
+    <Container size={"lg"}>
+      <Flex
+        justify={"center"}
+        direction={"column"}
+        h={{ base: "100vh", xl: 500 }}
+      >
+        <Text fw={600} fz={32} c={colors.neutral[0]} ta={"center"}>
+          Visi & Misi
+        </Text>
+        <SimpleGrid cols={{ base: 1, lg: 3 }} mt={32}>
+          {data.map((it, index) => (
+            <motion.div
+              key={index}
+              initial={{
+                y: 100,
+                opacity: 0,
+              }}
+              whileInView={{
+                y: 0,
+                opacity: 1,
+              }}
+              transition={{
+                duration: 0.5 * index,
+              }}
+              viewport={{
+                once: true,
+              }}
+            >
+              <Card radius={"xl"} shadow="xl" h={"100%"} withBorder>
+                <Stack align="center">
+                  {it.icon}
+                  <Text ta={"center"}>{it.text}</Text>
+                </Stack>
+              </Card>
+            </motion.div>
+          ))}
+        </SimpleGrid>
+      </Flex>
+    </Container>
   );
 };
 

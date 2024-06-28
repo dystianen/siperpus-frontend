@@ -12,12 +12,12 @@ const Hero = () => {
       align={"center"}
       pos={"relative"}
       style={{ zIndex: 1 }}
-      mih={{ base: "90vh", xl: "80vh" }}
+      mih={"90vh"}
     >
       <Stack align="center">
         <Text
-          fz={{ base: 50, md: 100 }}
-          lh={{ base: "60px", md: "150px" }}
+          fz={{ base: 50, md: 200 }}
+          lh={{ base: 2, md: 0.9 }}
           ta={"center"}
           lts={{ base: 10, lg: 20 }}
           fw={600}
