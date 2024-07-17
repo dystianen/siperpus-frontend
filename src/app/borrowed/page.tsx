@@ -89,7 +89,13 @@ const Borrowed = () => {
       });
     }
 
-    returnBook(detailBook.borrow_id)
+    const formData = new FormData();
+    formData.append("borrow_id", detailBook.borrow_id);
+    if (file) {
+      formData.append("proof_of_payment", file);
+    }
+
+    returnBook(formData)
       .unwrap()
       .then(() => {
         closeReview();
@@ -136,7 +142,7 @@ const Borrowed = () => {
 
       <Grid>
         {borrowed?.map((it, index) => (
-          <Grid.Col key={index} span={{ base: 12, md: 6, lg: 4 }}>
+          <Grid.Col key={index} span={{ base: 12, md: 6 }}>
             <Card shadow="sm">
               <Group wrap="nowrap" align="start">
                 <Image
@@ -156,18 +162,19 @@ const Borrowed = () => {
                       {it.status.replace("_", " ")}
                     </Badge>
                   </Text>
-                  {it.status === "borrowed" && (
-                    <Button
-                      color={colors.primary[0]}
-                      size="xs"
-                      w={"max-content"}
-                      variant="outline"
-                      onClick={() => handleOpenPopupReview(it)}
-                    >
-                      Return
-                    </Button>
-                  )}
                 </Stack>
+                {it.status === "borrowed" && (
+                  <Button
+                    mt="lg"
+                    size="xs"
+                    w="max-content"
+                    variant="outline"
+                    color="white"
+                    onClick={() => handleOpenPopupReview(it)}
+                  >
+                    Return
+                  </Button>
+                )}
               </Group>
             </Card>
           </Grid.Col>
@@ -233,7 +240,12 @@ const Borrowed = () => {
             Scan the QR below to make your transaction
           </Text>
 
-          <Image src={"/assets/imgs/QR.jpeg"} width={250} height={300} alt="QR" />
+          <Image
+            src={"/assets/imgs/QR.jpeg"}
+            width={250}
+            height={300}
+            alt="QR"
+          />
 
           <Stack gap={0}>
             <Text fw={600} c={"red"}>

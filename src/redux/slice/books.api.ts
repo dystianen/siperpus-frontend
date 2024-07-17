@@ -77,17 +77,16 @@ export const booksApi = createApi({
     getBorrowedBooks: builder.query<responseBorrowedTypes["data"], void>({
       query: () => ({
         url: "borrowing",
+        method: "GET",
       }),
       transformResponse: (response: responseBorrowedTypes) => response.data,
       providesTags: ["LIST_BORROWED"],
     }),
-    postReturnBook: builder.mutation<any, string>({
-      query: (borrow_id) => ({
+    postReturnBook: builder.mutation({
+      query: (payload) => ({
         url: "return",
         method: "POST",
-        body: {
-          borrow_id,
-        },
+        body: payload,
       }),
       invalidatesTags: ["LIST_BORROWED"],
     }),

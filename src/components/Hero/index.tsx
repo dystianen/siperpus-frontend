@@ -23,7 +23,7 @@ const Hero = () => {
           fw={600}
           className="bebas-neue-regular"
         >
-          Let’s Improve Yourself <br /> by Reading
+          Let’s Improve Yourself
         </Text>
         <Button
           size="lg"
