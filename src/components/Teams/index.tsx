@@ -3,8 +3,8 @@ import Marquee from "react-fast-marquee";
 import { Container, Flex, Text } from "@mantine/core";
 
 const Teams = () => {
-  const listTeam1 = "Dystian En Yusgiantoro - Annisa,";
-  const listTeam2 = "Dirga utama sidalle - Bentar Revikasha.";
+  const listTeam1 = "Dystian En Yusgiantoro - Kevin Morientes Sinaga,";
+  const listTeam2 = "Alfanoel Audrey - Dystian En Yusgiantoro.";
   return (
     <Container size={"xl"}>
       <Flex

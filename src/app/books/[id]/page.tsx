@@ -149,7 +149,7 @@ const DetailBook = () => {
 
       <Modal opened={opened} onClose={close} centered withCloseButton={false}>
         <Text fw={600} fz={24} ta={"center"}>
-          Are you sure you to borrow &quot;{detail?.title}&quot; book?
+          Are you sure you want to borrow &quot;{detail?.title}&quot; book?
         </Text>
 
         <Group my={16} justify="center">

@@ -164,16 +164,18 @@ const Borrowed = () => {
                   </Text>
                 </Stack>
                 {it.status === "borrowed" && (
-                  <Button
-                    mt="lg"
-                    size="xs"
-                    w="max-content"
-                    variant="outline"
-                    color="white"
-                    onClick={() => handleOpenPopupReview(it)}
-                  >
-                    Return
-                  </Button>
+                  <div>
+                    <Button
+                      mt="lg"
+                      size="xs"
+                      w="max-content"
+                      variant="outline"
+                      color="white"
+                      onClick={() => handleOpenPopupReview(it)}
+                    >
+                      Return
+                    </Button>
+                  </div>
                 )}
               </Group>
             </Card>
